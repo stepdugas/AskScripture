@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 110" preserveAspectRatio="xMidYMid meet" role="img" aria-label="AskScripture">
+  <!--
+    AskScripture wordmark.
+    "Ask" is Regular weight; "Scripture" is Bold. The typographic contrast
+    parses the verb from the noun without breaking the single-word brand.
+    Uses currentColor so the wordmark inherits ink color from its context.
+  -->
+  <text
+    x="0"
+    y="80"
+    font-family="'Source Serif 4', 'Source Serif Pro', 'Iowan Old Style', Charter, Georgia, serif"
+    font-size="82"
+    fill="currentColor"
+    style="font-feature-settings: 'liga', 'onum';">
+    <tspan font-weight="400" letter-spacing="-1.5">Ask</tspan><tspan font-weight="700" letter-spacing="-1.5">Scripture</tspan>
+  </text>
+</svg>

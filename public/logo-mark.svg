@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="AskScripture mark">
+  <!--
+    AskScripture mark — drop-cap "A" inside a hairline frame.
+    Reads as a printed bookplate or library card. Fills the square at
+    every favicon / app-icon size. Paper bg + ink navy.
+  -->
+  <rect width="512" height="512" fill="#FBFAF7"/>
+  <!-- Inner hairline frame -->
+  <rect x="48" y="48" width="416" height="416" fill="none" stroke="#1B2845" stroke-width="4"/>
+  <!-- Tiny corner ticks — gives the frame a printed feel -->
+  <g fill="#1B2845">
+    <rect x="48" y="48" width="20" height="2"/>
+    <rect x="48" y="48" width="2" height="20"/>
+    <rect x="444" y="48" width="20" height="2"/>
+    <rect x="462" y="48" width="2" height="20"/>
+    <rect x="48" y="462" width="20" height="2"/>
+    <rect x="48" y="444" width="2" height="20"/>
+    <rect x="444" y="462" width="20" height="2"/>
+    <rect x="462" y="444" width="2" height="20"/>
+  </g>
+  <!-- Drop-cap A in Source Serif with broad serif fallbacks -->
+  <text
+    x="256"
+    y="360"
+    font-family="'Source Serif 4', 'Source Serif Pro', 'Iowan Old Style', Charter, Georgia, serif"
+    font-size="340"
+    font-weight="700"
+    fill="#1B2845"
+    text-anchor="middle"
+    style="font-feature-settings: 'liga';">A</text>
+</svg>

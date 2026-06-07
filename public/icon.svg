@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="AskScripture">
+  <!--
+    Favicon / PWA icon. Slightly thicker frame than logo-mark.svg so the
+    edges hold at 16-32px. Otherwise identical visual concept.
+  -->
+  <rect width="512" height="512" fill="#FBFAF7"/>
+  <rect x="44" y="44" width="424" height="424" fill="none" stroke="#1B2845" stroke-width="8"/>
+  <text
+    x="256"
+    y="362"
+    font-family="'Source Serif 4', 'Source Serif Pro', 'Iowan Old Style', Charter, Georgia, serif"
+    font-size="340"
+    font-weight="700"
+    fill="#1B2845"
+    text-anchor="middle">A</text>
+</svg>
