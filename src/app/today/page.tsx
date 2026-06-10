@@ -1,8 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import { dailyVerse } from "@/data/daily-verses";
 import { parseRef, refToHref } from "@/lib/bible/parse-ref";
 import {
@@ -13,6 +11,7 @@ import {
 } from "@/lib/daily-content";
 import { features } from "@/lib/env";
 import { GenericPageSkeleton } from "@/components/skeletons";
+import { Markdown } from "@/components/markdown";
 
 export const metadata: Metadata = {
   title: "Today",
@@ -107,54 +106,7 @@ async function Content({
             </p>
             {content ? (
               <article className="mt-6 serif text-[1rem] leading-[1.85] text-ink">
-                <ReactMarkdown
-                  remarkPlugins={[remarkGfm]}
-                  components={{
-                    h1: ({ children }) => (
-                      <h1 className="serif text-[1.5rem] leading-tight text-ink font-semibold mt-6 mb-3 first:mt-0">
-                        {children}
-                      </h1>
-                    ),
-                    h2: ({ children }) => (
-                      <h2 className="serif text-[1.25rem] leading-tight text-ink font-semibold mt-6 mb-2 first:mt-0">
-                        {children}
-                      </h2>
-                    ),
-                    h3: ({ children }) => (
-                      <h3 className="text-[0.6875rem] uppercase tracking-[0.16em] text-ink-subtle font-medium mt-5 mb-2 first:mt-0">
-                        {children}
-                      </h3>
-                    ),
-                    p: ({ children }) => (
-                      <p className="mb-4 last:mb-0">{children}</p>
-                    ),
-                    strong: ({ children }) => (
-                      <strong className="font-semibold text-ink">
-                        {children}
-                      </strong>
-                    ),
-                    em: ({ children }) => (
-                      <em className="italic">{children}</em>
-                    ),
-                    ul: ({ children }) => (
-                      <ul className="list-disc pl-5 mb-4 space-y-1">
-                        {children}
-                      </ul>
-                    ),
-                    ol: ({ children }) => (
-                      <ol className="list-decimal pl-5 mb-4 space-y-1">
-                        {children}
-                      </ol>
-                    ),
-                    blockquote: ({ children }) => (
-                      <blockquote className="border-l-2 border-accent pl-4 my-4 text-ink-muted italic">
-                        {children}
-                      </blockquote>
-                    ),
-                  }}
-                >
-                  {content}
-                </ReactMarkdown>
+                <Markdown>{content}</Markdown>
               </article>
             ) : (
               <NotReady kind={kind} />

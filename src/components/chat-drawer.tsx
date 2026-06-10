@@ -5,6 +5,7 @@ import { usePreferences } from "@/lib/preferences/provider";
 import { MODE_LIST, type ModeDescriptor } from "@/lib/chat/modes";
 import type { ChatMode } from "@/lib/preferences/types";
 import { cn } from "@/lib/utils/cn";
+import { Markdown } from "@/components/markdown";
 
 type Message = { role: "user" | "assistant"; content: string };
 
@@ -255,12 +256,13 @@ function Bubble({ message }: { message: Message }) {
         AskScripture
       </div>
       <div
-        className="text-[0.9375rem] text-ink leading-7 whitespace-pre-wrap"
+        className="text-[0.9375rem] text-ink leading-7"
         aria-live="polite"
         aria-atomic="false"
       >
-        {message.content}
-        {!message.content && (
+        {message.content ? (
+          <Markdown>{message.content}</Markdown>
+        ) : (
           <span
             className="inline-block w-2 h-4 bg-ink-muted align-middle animate-pulse"
             aria-hidden="true"

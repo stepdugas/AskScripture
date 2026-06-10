@@ -4,6 +4,7 @@ import { useState } from "react";
 import { parseRef, refToString } from "@/lib/bible/parse-ref";
 import { usePreferences } from "@/lib/preferences/provider";
 import { getTranslationOrDefault } from "@/lib/bible/translations";
+import { Markdown } from "@/components/markdown";
 
 type Props = { kind: string; initialRef?: string };
 
@@ -134,8 +135,8 @@ export function GenerateForm({ kind, initialRef = "" }: Props) {
           <div className="text-[0.6875rem] uppercase tracking-[0.16em] text-ink-subtle font-medium mb-3">
             Output
           </div>
-          <div className="serif text-[1.0625rem] leading-[1.75] text-ink whitespace-pre-wrap">
-            {output}
+          <div className="serif text-[1.0625rem] leading-[1.75] text-ink">
+            {output && <Markdown>{output}</Markdown>}
             {loading && (
               <span className="inline-block w-2 h-5 bg-ink-muted align-middle animate-pulse ml-1" />
             )}

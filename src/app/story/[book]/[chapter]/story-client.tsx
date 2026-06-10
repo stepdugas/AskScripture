@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { usePreferences } from "@/lib/preferences/provider";
 import { getTranslationOrDefault } from "@/lib/bible/translations";
+import { Markdown } from "@/components/markdown";
 
 type Props = {
   bookSlug: string;
@@ -100,8 +101,8 @@ export function StoryClient({ bookSlug, bookId, bookName, chapter }: Props) {
   }
 
   return (
-    <div className="serif text-[1.0625rem] leading-[1.85] text-ink whitespace-pre-wrap">
-      {text}
+    <div className="serif text-[1.0625rem] leading-[1.85] text-ink">
+      {text && <Markdown>{text}</Markdown>}
       {loading && (
         <span className="inline-block w-2 h-5 bg-ink-muted align-middle animate-pulse ml-1" />
       )}
