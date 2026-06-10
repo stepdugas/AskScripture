@@ -52,6 +52,16 @@ export default function PrivacyPage() {
               . Once accounts are live, deletion will remove everything tied to
               your email within 30 days.
             </p>
+            <p>
+              <strong>Questions?</strong> Email {""}
+              <a
+                href="mailto:stephanie@erie-apps.com"
+                className="text-accent hover:underline"
+              >
+                stephanie@erie-apps.com
+              </a>
+              . One human reads every message.
+            </p>
           </div>
         </article>
     </>

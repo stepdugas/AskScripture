@@ -57,7 +57,10 @@ export function SiteFooter() {
             </div>
             <ul className="mt-3 space-y-2 text-[0.8125rem] text-ink-muted">
               <li><Link href="/signin" className="hover:text-ink">Sign in</Link></li>
-              <li><Link href="/support" className="hover:text-ink">Support</Link></li>
+              <li><Link href="/contact" className="hover:text-ink">Contact</Link></li>
+              <li><Link href="/support" className="hover:text-ink">Donate</Link></li>
+              <li><Link href="/privacy" className="hover:text-ink">Privacy</Link></li>
+              <li><Link href="/terms" className="hover:text-ink">Terms</Link></li>
             </ul>
           </div>
         </div>
