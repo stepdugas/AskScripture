@@ -4,7 +4,6 @@ import { BookIndex } from "@/components/book-index";
 import { ReferenceSearch } from "@/components/reference-search";
 import { BIAS_FLAGS } from "@/data/bias-flags";
 import { bookBySlug } from "@/lib/bible/books";
-import { GenericPageSkeleton } from "@/components/skeletons";
 
 export default function HomePage({
   searchParams,
@@ -19,7 +18,7 @@ export default function HomePage({
           <div className="grid grid-cols-12 gap-x-6 lg:gap-x-10">
             <div className="col-span-12 lg:col-span-6">
               <div className="text-[0.6875rem] uppercase tracking-[0.16em] text-ink-subtle font-medium">
-                A study tool, not a sermon
+                For close readers
               </div>
               <h1 className="serif mt-4 text-[2.75rem] lg:text-[3.5rem] leading-[1.02] tracking-tight text-ink font-semibold">
                 Read the Bible with context,
@@ -62,92 +61,6 @@ export default function HomePage({
         <TodayDebateBand searchParams={searchParams} />
       </Suspense>
 
-      {/* Capabilities — editorial 3-col grid */}
-      <section className="border-b border-rule">
-        <div className="mx-auto max-w-[1320px] px-6 lg:px-10 py-20">
-          <div className="grid grid-cols-12 gap-x-6 lg:gap-x-10 mb-12 items-end">
-            <h2 className="col-span-12 lg:col-span-6 serif text-[2rem] leading-tight tracking-tight text-ink font-semibold">
-              What's on the page.
-            </h2>
-            <p className="col-span-12 lg:col-span-5 lg:col-start-8 text-[0.9375rem] leading-6 text-ink-muted">
-              Every chapter view brings the tools that scholars use into the
-              margins of an ordinary read-through.
-            </p>
-          </div>
-          <div className="grid grid-cols-12 gap-x-6 gap-y-12 lg:gap-x-10">
-            <Capability
-              index="01"
-              title="Side-by-side translations"
-              body="Compare any two of ten free translations line by line. Differences are diffed inline so you can see exactly where translators diverged."
-              href="/compare/john/1"
-            />
-            <Capability
-              index="02"
-              title="Translation debates"
-              body="Where a translation makes a contested theological choice — arsenokoitai, kephalē, almah, monogenēs — a marker opens the full debate."
-              href="/word-study"
-            />
-            <Capability
-              index="03"
-              title="Cross-references"
-              body="340,000 cross-references from the Treasury of Scripture Knowledge, weighted by community votes."
-              href="/genesis/1"
-            />
-            <Capability
-              index="04"
-              title="Study chat"
-              body="Six modes — Objective, Scholarly, Devotional, Affirming, Storytelling, and Kids — let you choose how an answer is framed."
-              href="/chat"
-            />
-            <Capability
-              index="05"
-              title="Generated content"
-              body="Personal devotionals, family devotionals, and sermon outlines from any passage, written to your preferences."
-              href="/generate/devotional"
-            />
-            <Capability
-              index="06"
-              title="Reading plans"
-              body="Curated plans paced for actual reading — Gospels in 30 days, Romans in 14, Torah foundations, Wisdom literature."
-              href="/plans"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Who this is for */}
-      <section className="border-b border-rule bg-paper-2">
-        <div className="mx-auto max-w-[1320px] px-6 lg:px-10 py-20">
-          <div className="grid grid-cols-12 gap-x-6 lg:gap-x-10 mb-12 items-end">
-            <h2 className="col-span-12 lg:col-span-6 serif text-[2rem] leading-tight tracking-tight text-ink font-semibold">
-              Built for honest readers.
-            </h2>
-            <p className="col-span-12 lg:col-span-5 lg:col-start-8 text-[0.9375rem] leading-6 text-ink-muted">
-              Bible apps mostly come with an angle. This one shows you the
-              seam between the text and the interpretation, then steps back.
-            </p>
-          </div>
-          <div className="grid grid-cols-12 gap-x-6 gap-y-10 lg:gap-x-10">
-            <Audience
-              title="People who left church but not the text"
-              body="Read without a worship band, a sales pitch, or a pastor's framing. The Hebrew and Greek are right there. Decide what you believe on your own time."
-            />
-            <Audience
-              title="LGBTQ+ Christians"
-              body="The clobber passages, in the original language, with the actual scholarly debate — arsenokoitai, malakoi, kephalē, Junia. No softening. No agenda-pushing in either direction."
-            />
-            <Audience
-              title="Pastors who want honest exegesis"
-              body="Sermon outlines, generated content, and lexical sourcing that doesn't presuppose your denomination. Mainline, affirming, evangelical, or none of the above."
-            />
-            <Audience
-              title="Parents who want a family devotional that doesn't lie"
-              body="Family mode is honest about the hard parts and does not insert Jesus into Old Testament passages where he isn't the subject. Built for kids and the adults reading with them."
-            />
-          </div>
-        </div>
-      </section>
-
       {/* What you get — Free vs Pro */}
       <section className="border-b border-rule">
         <div className="mx-auto max-w-[1320px] px-6 lg:px-10 py-20">
@@ -156,14 +69,13 @@ export default function HomePage({
               What you get.
             </h2>
             <p className="col-span-12 lg:col-span-5 lg:col-start-8 text-[0.9375rem] leading-6 text-ink-muted">
-              Most of the tool is free, forever, with no signup. Pro lifts
-              the daily AI caps and unlocks custom generation from any
-              passage.
+              Most of the tool is free, forever, with no signup. Pro is the
+              full study companion — your private Bible scholar, on call.
             </p>
           </div>
 
           <div className="grid grid-cols-12 gap-x-6 lg:gap-x-10 gap-y-10">
-            <div className="col-span-12 lg:col-span-6 border border-rule p-8">
+            <div className="col-span-12 lg:col-span-6 border border-rule p-8 bg-paper">
               <div className="flex items-baseline justify-between">
                 <div className="text-[0.6875rem] uppercase tracking-[0.16em] text-ink-subtle font-medium">
                   Free
@@ -175,34 +87,40 @@ export default function HomePage({
               <h3 className="serif mt-2 text-[1.5rem] leading-tight text-ink font-semibold">
                 Read carefully.
               </h3>
+              <p className="mt-3 text-[0.875rem] leading-6 text-ink-muted">
+                The whole reading and study surface — no signup required.
+              </p>
               <ul className="mt-6 space-y-3 text-[0.9375rem] leading-6 text-ink">
-                <Bullet>10 free Bible translations (BSB, KJV, NET, WEB, more)</Bullet>
-                <Bullet>Side-by-side comparison with word-level diff</Bullet>
-                <Bullet>Greek + Hebrew word study (425k tagged words)</Bullet>
+                <Bullet>10 free Bible translations (BSB, KJV, NET, WEB, and more)</Bullet>
+                <Bullet>Side-by-side compare with word-level diff</Bullet>
+                <Bullet>Greek + Hebrew word study — 425,000 tagged words</Bullet>
                 <Bullet>33 translation debates — arsenokoitai, kephalē, almah, Junia, gehenna, shalom and more</Bullet>
                 <Bullet>340,000 cross-references per chapter</Bullet>
-                <Bullet>5 curated reading plans + progress tracking</Bullet>
                 <Bullet>Today's translation debate — a new contested word every day</Bullet>
-                <Bullet>AI study chat — 8 messages/day signed in, 6 lenses to choose from</Bullet>
-                <Bullet>Notes, highlights, bookmarks, streaks</Bullet>
+                <Bullet>5 curated reading plans with progress tracking</Bullet>
+                <Bullet>Study Chat — 8 messages a day when signed in, with six tuned lenses</Bullet>
+                <Bullet>Notes, highlights, bookmarks, streaks — synced when signed in</Bullet>
               </ul>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
-                  href="/signin"
+                  href="/genesis/1"
                   className="inline-flex h-10 items-center px-4 border border-rule-strong text-[0.8125rem] text-ink hover:border-accent hover:text-accent transition-colors"
                 >
-                  Sign in →
+                  Start reading →
                 </Link>
                 <Link
-                  href="/genesis/1"
+                  href="/signin"
                   className="inline-flex h-10 items-center text-[0.8125rem] text-ink-muted hover:text-accent transition-colors"
                 >
-                  Start reading without an account
+                  Or sign in to sync
                 </Link>
               </div>
             </div>
 
-            <div className="col-span-12 lg:col-span-6 border-2 border-accent p-8 bg-paper">
+            <div className="col-span-12 lg:col-span-6 border-2 border-accent p-8 bg-paper relative">
+              <div className="absolute -top-3 left-8 bg-accent text-paper text-[0.625rem] uppercase tracking-[0.16em] font-medium px-2.5 py-1">
+                Most flexible
+              </div>
               <div className="flex items-baseline justify-between">
                 <div className="text-[0.6875rem] uppercase tracking-[0.16em] text-accent font-medium">
                   Pro
@@ -212,39 +130,124 @@ export default function HomePage({
                 </div>
               </div>
               <h3 className="serif mt-2 text-[1.5rem] leading-tight text-ink font-semibold">
-                Everything free, plus.
+                Everything free, plus the study companion.
               </h3>
-              <ul className="mt-6 space-y-3 text-[0.9375rem] leading-6 text-ink">
+              <p className="mt-3 text-[0.875rem] leading-6 text-ink-muted">
+                Less than a paperback. More than a chatbot.
+              </p>
+              <ul className="mt-6 space-y-4 text-[0.9375rem] leading-6 text-ink">
                 <Bullet>
-                  <strong className="font-semibold">Unlimited AI chat</strong> — no daily caps
+                  <strong className="font-semibold">Unlimited Study Chat</strong>
+                  {" — "}six lenses tuned for honest Bible reading
+                  (Scholarly, Devotional, Affirming, Objective, Storytelling,
+                  Kids). Not a generic chatbot — it knows the passage you're
+                  on, the contested words in it, and the tradition you
+                  belong to.
                 </Bullet>
                 <Bullet>
-                  <strong className="font-semibold">A smarter model</strong> — Pro uses Claude Sonnet 4.6 instead of Haiku 4.5; meaningfully better answers on hard passages
+                  <strong className="font-semibold">Generate from any passage</strong>
+                  {" — "}on demand: a personal devotional, a family devotional
+                  for kids ages 6-12, a 25-30 minute sermon outline, or a
+                  cinematic retelling. Pick any chapter; get the kind you
+                  want, in the voice you want.
                 </Bullet>
                 <Bullet>
-                  <strong className="font-semibold">Generate from any passage</strong> — personal devotional, family devotional, sermon outline, or cinematic story from any chapter you pick (free users only see today's shared one)
+                  <strong className="font-semibold">Deeper answers</strong>
+                  {" — "}Pro responses do the long read. Cross-references,
+                  scholarly debate, original-language nuance. Free is for
+                  quick takes; Pro is for the questions worth sitting with.
                 </Bullet>
-                <Bullet>Priority email support</Bullet>
               </ul>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
                   href="/pricing"
                   className="inline-flex h-10 items-center px-4 bg-accent text-paper text-[0.8125rem] font-medium hover:bg-accent-2 transition-colors"
                 >
-                  Start Pro →
+                  Start Pro · $5 / mo →
                 </Link>
                 <Link
                   href="/support"
                   className="inline-flex h-10 items-center text-[0.8125rem] text-ink-muted hover:text-accent transition-colors"
                 >
-                  Or send a donation
+                  Or send a one-time donation
                 </Link>
               </div>
-              <p className="mt-6 text-[0.75rem] leading-5 text-ink-muted italic">
-                Early users grandfathered free. If you sign up in the first
-                90 days, you stay free forever.
-              </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What's on the page — richer mockups, not a list */}
+      <section className="border-b border-rule">
+        <div className="mx-auto max-w-[1320px] px-6 lg:px-10 py-20">
+          <div className="grid grid-cols-12 gap-x-6 lg:gap-x-10 mb-14 items-end">
+            <h2 className="col-span-12 lg:col-span-6 serif text-[2rem] leading-tight tracking-tight text-ink font-semibold">
+              What's on the page.
+            </h2>
+            <p className="col-span-12 lg:col-span-5 lg:col-start-8 text-[0.9375rem] leading-6 text-ink-muted">
+              Every chapter view brings the tools that scholars use into the
+              margins of an ordinary read-through.
+            </p>
+          </div>
+
+          {/* Feature 1 + 2 — side by side */}
+          <div className="grid grid-cols-12 gap-x-6 lg:gap-x-10 gap-y-14 mb-14">
+            <FeatureBlock
+              index="01"
+              title="Translation debates"
+              href="/word-study"
+              body="Where translators have made a contested theological choice — almah, arsenokoitai, kephalē, monogenēs — a marker opens the full debate, sourced from BDB / BDAG / LSJ and monograph-level scholarship."
+            >
+              <DebateMockup />
+            </FeatureBlock>
+            <FeatureBlock
+              index="02"
+              title="Greek and Hebrew word study"
+              href="/words/john/1"
+              body="425,000 tagged words across the whole Hebrew Bible and Greek New Testament. Tap any verse, see the original language with morphology and a short gloss."
+            >
+              <WordStudyMockup />
+            </FeatureBlock>
+          </div>
+
+          {/* Feature 3 + 4 — side by side */}
+          <div className="grid grid-cols-12 gap-x-6 lg:gap-x-10 gap-y-14 mb-14">
+            <FeatureBlock
+              index="03"
+              title="Side-by-side translations"
+              href="/compare/genesis/1"
+              body="Compare any two of ten free translations with a word-level diff. See exactly where the KJV and BSB and NET diverge, and follow the trail to why."
+            >
+              <CompareMockup />
+            </FeatureBlock>
+            <FeatureBlock
+              index="04"
+              title="Study Chat — six lenses"
+              href="/chat"
+              body="Ask a question and pick the voice — Scholarly, Devotional, Affirming, Objective, Storytelling, or Kids. The same passage, framed however you need it framed."
+            >
+              <ChatMockup />
+            </FeatureBlock>
+          </div>
+
+          {/* Feature 5 + 6 — side by side */}
+          <div className="grid grid-cols-12 gap-x-6 lg:gap-x-10 gap-y-14">
+            <FeatureBlock
+              index="05"
+              title="Generate from any passage"
+              href="/generate/devotional"
+              body="A personal devotional, family devotional, sermon outline, or cinematic story — written from any chapter you pick, in your tradition, at the length you want."
+            >
+              <GenerateMockup />
+            </FeatureBlock>
+            <FeatureBlock
+              index="06"
+              title="Reading plans + cross-references"
+              href="/plans"
+              body="Five curated plans paced for actual reading — Gospels in 30 days, Romans in 14. 340,000 cross-references stream into the margin as you read."
+            >
+              <PlansMockup />
+            </FeatureBlock>
           </div>
         </div>
       </section>
@@ -340,49 +343,42 @@ function todayFlag(d: Date) {
   return BIAS_FLAGS[dayOfYear % BIAS_FLAGS.length];
 }
 
-function Capability({
+function FeatureBlock({
   index,
   title,
   body,
   href,
+  children,
 }: {
   index: string;
   title: string;
   body: string;
   href: string;
+  children: React.ReactNode;
 }) {
   return (
-    <Link
-      href={href}
-      className="col-span-12 md:col-span-6 lg:col-span-4 group block"
-    >
-      <div className="grid grid-cols-[2.25rem_1fr] gap-x-3 items-baseline">
-        <div className="font-mono text-[0.6875rem] text-ink-subtle tabular-nums pt-1">
+    <div className="col-span-12 lg:col-span-6 grid grid-cols-12 gap-x-4 lg:gap-x-6 items-start">
+      <div className="col-span-12 md:col-span-5">
+        <div className="font-mono text-[0.6875rem] text-ink-subtle tabular-nums">
           {index}
         </div>
-        <div>
-          <h3 className="serif text-[1.125rem] font-semibold text-ink leading-snug group-hover:text-accent transition-colors">
-            {title} &rarr;
-          </h3>
-          <p className="mt-2 text-[0.9375rem] leading-6 text-ink-muted">
-            {body}
-          </p>
-        </div>
-      </div>
-    </Link>
-  );
-}
-
-function Audience({ title, body }: { title: string; body: string }) {
-  return (
-    <div className="col-span-12 md:col-span-6">
-      <div className="border-l-2 border-accent pl-5">
-        <h3 className="serif text-[1.125rem] leading-snug text-ink font-semibold max-w-[36ch]">
+        <h3 className="serif mt-2 text-[1.25rem] font-semibold text-ink leading-snug">
           {title}
         </h3>
-        <p className="mt-3 text-[0.9375rem] leading-7 text-ink-muted max-w-[58ch]">
+        <p className="mt-3 text-[0.9375rem] leading-6 text-ink-muted">
           {body}
         </p>
+        <Link
+          href={href}
+          className="mt-4 inline-block text-[0.8125rem] text-accent hover:underline"
+        >
+          See it →
+        </Link>
+      </div>
+      <div className="col-span-12 md:col-span-7 mt-6 md:mt-0">
+        <div className="border border-rule p-5 bg-paper-2/60 min-h-[12rem]">
+          {children}
+        </div>
       </div>
     </div>
   );
@@ -396,6 +392,216 @@ function Bullet({ children }: { children: React.ReactNode }) {
       </span>
       <span>{children}</span>
     </li>
+  );
+}
+
+/* ---------- Editorial feature mockups (no PNGs, all typography) ---------- */
+
+function DebateMockup() {
+  return (
+    <div>
+      <div className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-ink-subtle">
+        Isaiah 7:14 · עַלְמָה · almah
+      </div>
+      <p className="serif mt-2 text-[0.9375rem] leading-6 text-ink font-semibold">
+        "Virgin" or "young woman"?
+      </p>
+      <p className="serif mt-2 text-[0.8125rem] leading-6 text-ink-muted">
+        Hebrew almah names a young woman of marriageable age — sexual status
+        is not part of its lexical core. The Greek Septuagint chose parthenos,
+        which Matthew 1:23 quotes.
+      </p>
+      <div className="mt-3 grid grid-cols-[3rem_1fr] gap-x-2 gap-y-1 text-[0.75rem]">
+        <span className="font-mono text-ink-subtle">BSB</span>
+        <span className="text-ink">the virgin will be with child</span>
+        <span className="font-mono text-ink-subtle">JPS</span>
+        <span className="text-ink">the young woman is with child</span>
+      </div>
+    </div>
+  );
+}
+
+function WordStudyMockup() {
+  return (
+    <div>
+      <div className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-ink-subtle">
+        John 1:1 · word study
+      </div>
+      <div className="mt-3 grid grid-cols-[1.5rem_1fr] gap-x-2 gap-y-1.5 items-baseline text-[0.8125rem]">
+        <sup className="text-[0.625rem] font-mono text-ink-subtle">1</sup>
+        <div>
+          <span className="font-mono text-flag text-[0.9375rem]">λόγος</span>
+          <span className="text-ink-muted ml-2">logos · noun, masc, sg</span>
+          <div className="serif text-ink-muted mt-0.5 text-[0.75rem]">
+            "word, reason, account, ordering principle"
+          </div>
+        </div>
+        <sup className="text-[0.625rem] font-mono text-ink-subtle">2</sup>
+        <div>
+          <span className="font-mono text-flag text-[0.9375rem]">ἀρχῇ</span>
+          <span className="text-ink-muted ml-2">archē · dat, sg</span>
+          <div className="serif text-ink-muted mt-0.5 text-[0.75rem]">
+            "beginning, origin, first principle"
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CompareMockup() {
+  return (
+    <div>
+      <div className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-ink-subtle">
+        Romans 12:1 · BSB vs KJV
+      </div>
+      <div className="mt-3 grid grid-cols-2 gap-x-3 text-[0.75rem]">
+        <div>
+          <div className="font-mono text-ink-subtle text-[0.625rem] mb-1">
+            BSB
+          </div>
+          <p className="serif leading-6 text-ink">
+            <sup className="text-[0.5rem] font-mono">1</sup>{" "}
+            offer your bodies as a{" "}
+            <span className="bg-accent/10 text-accent px-0.5">living sacrifice</span>
+            , holy and pleasing to God
+          </p>
+        </div>
+        <div>
+          <div className="font-mono text-ink-subtle text-[0.625rem] mb-1">
+            KJV
+          </div>
+          <p className="serif leading-6 text-ink">
+            <sup className="text-[0.5rem] font-mono">1</sup>{" "}
+            present your bodies a{" "}
+            <span className="bg-flag/10 text-flag px-0.5">living sacrifice</span>
+            , holy, acceptable unto God
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ChatMockup() {
+  return (
+    <div>
+      <div className="flex flex-wrap gap-1.5 mb-3">
+        {["Objective", "Scholarly", "Devotional", "Affirming", "Story", "Kids"].map(
+          (mode, i) => (
+            <span
+              key={mode}
+              className={
+                "font-mono text-[0.625rem] uppercase tracking-[0.12em] px-2 py-0.5 " +
+                (i === 3
+                  ? "bg-accent text-paper"
+                  : "border border-rule-strong text-ink-muted")
+              }
+            >
+              {mode}
+            </span>
+          ),
+        )}
+      </div>
+      <div className="text-[0.6875rem] uppercase tracking-[0.16em] text-ink-subtle font-medium">
+        You · 1 Cor 6:9
+      </div>
+      <p className="serif mt-1 text-[0.8125rem] leading-5 text-ink">
+        What's the affirming reading of arsenokoitai here?
+      </p>
+      <div className="mt-3 text-[0.6875rem] uppercase tracking-[0.16em] text-ink-subtle font-medium">
+        AskScripture · Affirming
+      </div>
+      <p className="serif mt-1 text-[0.8125rem] leading-5 text-ink-muted">
+        Arsenokoitēs is a rare compound — Paul or someone in his circle may
+        have coined it, drawing on Leviticus 18:22 LXX. Brownson and Loader
+        argue it targets a specific…
+      </p>
+    </div>
+  );
+}
+
+function GenerateMockup() {
+  return (
+    <div>
+      <div className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-ink-subtle">
+        Generate · Romans 8
+      </div>
+      <div className="mt-3 grid grid-cols-2 gap-2 text-[0.75rem]">
+        <button
+          type="button"
+          className="border border-rule-strong px-2.5 py-1.5 text-left text-ink"
+          tabIndex={-1}
+        >
+          <div className="font-mono text-[0.625rem] uppercase tracking-[0.12em] text-ink-subtle">
+            Personal
+          </div>
+          <div className="serif mt-0.5">Devotional</div>
+        </button>
+        <button
+          type="button"
+          className="border border-rule-strong px-2.5 py-1.5 text-left text-ink"
+          tabIndex={-1}
+        >
+          <div className="font-mono text-[0.625rem] uppercase tracking-[0.12em] text-ink-subtle">
+            For kids 6-12
+          </div>
+          <div className="serif mt-0.5">Family devotional</div>
+        </button>
+        <button
+          type="button"
+          className="border border-rule-strong px-2.5 py-1.5 text-left text-ink"
+          tabIndex={-1}
+        >
+          <div className="font-mono text-[0.625rem] uppercase tracking-[0.12em] text-ink-subtle">
+            25-30 min
+          </div>
+          <div className="serif mt-0.5">Sermon outline</div>
+        </button>
+        <button
+          type="button"
+          className="border-2 border-accent px-2.5 py-1.5 text-left text-ink bg-paper"
+          tabIndex={-1}
+        >
+          <div className="font-mono text-[0.625rem] uppercase tracking-[0.12em] text-accent">
+            Cinematic
+          </div>
+          <div className="serif mt-0.5">Story retelling</div>
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function PlansMockup() {
+  return (
+    <div>
+      <div className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-ink-subtle">
+        Reading plans
+      </div>
+      <ul className="mt-3 space-y-2.5 text-[0.8125rem]">
+        {[
+          { title: "Gospels in 30 days", progress: 60 },
+          { title: "Psalms in 50 days", progress: 24 },
+          { title: "Romans in 14 days", progress: 0 },
+        ].map((p) => (
+          <li key={p.title}>
+            <div className="flex items-baseline justify-between">
+              <span className="serif text-ink">{p.title}</span>
+              <span className="font-mono text-[0.625rem] text-ink-subtle">
+                {p.progress}%
+              </span>
+            </div>
+            <div className="mt-1 h-1 bg-rule">
+              <div
+                className="h-full bg-accent"
+                style={{ width: `${p.progress}%` }}
+              />
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
