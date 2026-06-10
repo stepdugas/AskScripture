@@ -458,6 +458,233 @@ export const BIAS_FLAGS: BiasFlag[] = [
     tags: ["gender", "creation"],
   },
   {
+    id: "jhn-1-1-logos",
+    bookSlug: "john",
+    chapter: 1,
+    verses: [1, 14],
+    headline: "logos: \"Word,\" \"reason,\" or the cosmic ordering principle?",
+    term: "logos",
+    script: "λόγος",
+    language: "Greek",
+    summary:
+      "Logos in Greek covers \"word,\" \"speech,\" \"reason,\" and \"account.\" In John 1:1 it draws on Stoic and Hellenistic-Jewish philosophy (Philo's Logos as cosmic mediator) as much as on the Hebrew dabar. English \"Word\" picks one register and quietly drops the philosophical inheritance.",
+    body:
+      "Logos has a wide lexical range in classical and Hellenistic Greek — speech, reason, account, principle, the ordering rationality of the cosmos. Stoic philosophy used logos for the rational principle animating the universe. Hellenistic-Jewish philosophy, especially Philo of Alexandria writing in the early 1st century CE, used Logos as a name for a divine mediator-figure standing between transcendent God and creation.\n\nJohn 1:1's prologue draws on this multi-stranded background while also echoing the Hebrew Bible — Genesis 1's \"and God said\" and the personification of Wisdom in Proverbs 8 and Sirach 24. The result is deliberately layered: the Logos is the dabar (word) by which God creates, the sophia (wisdom) through which God orders, and the rational principle that pervades the cosmos. Translating monolithically as \"Word\" preserves the Genesis 1 echo but loses the philosophical and sapiential resonances. Some translators (Moffatt, the New English Bible, Robert Alter) have experimented with \"Reason,\" \"Word,\" or transliterating \"Logos\"; none catches all the registers John seems to want.",
+    renderings: [
+      { translation: "BSB", text: "In the beginning was the Word" },
+      { translation: "WEB", text: "In the beginning was the Word" },
+      { translation: "KJV", text: "In the beginning was the Word" },
+      { translation: "Moffatt", text: "The Logos existed in the very beginning" },
+    ],
+    tags: ["creation", "christology"],
+  },
+  {
+    id: "jhn-3-3-anothen",
+    bookSlug: "john",
+    chapter: 3,
+    verses: [3, 7],
+    headline: "\"Born again\" or \"born from above\"? — gennēthēnai anōthen",
+    term: "anōthen",
+    script: "ἄνωθεν",
+    language: "Greek",
+    summary:
+      "Anōthen means both \"again\" (temporal) and \"from above\" (spatial). Nicodemus hears \"again\" and asks how a grown man can re-enter the womb; Jesus appears to mean \"from above.\" The Greek puns deliberately. English picks one and loses the joke.",
+    body:
+      "Anōthen carries two senses in Greek: \"again\" (temporal — a second time) and \"from above\" (spatial — from the higher place, often a way of saying \"from God\"). John 3:3 trades on the ambiguity. Nicodemus hears \"born again\" and asks the literal-minded question — how can a grown man re-enter his mother's womb? Jesus's reply in v5-8 about water and spirit, wind blowing where it wills, makes plain that the intended sense is \"from above\" / \"from God,\" not \"a second time.\"\n\nThis is one of the clearest places in the New Testament where the English translation tradition has propagated one half of a deliberate Greek pun and made the dialogue make less sense than it does in Greek. The KJV's \"born again\" — inherited by most evangelical translations — also became the brand name for an entire wing of American Protestantism, which makes correcting it in revision politically costly. The NRSV moves to \"born from above\" with a footnote on \"again\"; most other translations retain \"born again.\" The dispute is not whether anōthen has both senses — it does — but which one to foreground.",
+    renderings: [
+      { translation: "BSB", text: "unless he is born again" },
+      { translation: "WEB", text: "unless one is born anew" },
+      { translation: "KJV", text: "Except a man be born again" },
+      { translation: "NRSVue (paid)", text: "no one can see the kingdom of God without being born from above" },
+    ],
+    tags: ["atonement"],
+  },
+  {
+    id: "rom-3-25-hilasterion",
+    bookSlug: "romans",
+    chapter: 3,
+    verses: [25],
+    headline: "hilastērion: \"propitiation,\" \"expiation,\" or \"mercy seat\"?",
+    term: "hilastērion",
+    script: "ἱλαστήριον",
+    language: "Greek",
+    summary:
+      "Hilastērion can mean \"propitiation\" (averting wrath), \"expiation\" (covering sin), or — drawing on the Septuagint — the lid of the ark of the covenant (the kapporet / mercy seat). The choice shapes the entire atonement theology of Romans 3.",
+    body:
+      "Hilastērion has three live readings in Romans 3:25. (1) Propitiation: an offering that turns away wrath. This reading, dominant in Reformation theology and revived by Leon Morris, takes the verse to mean Christ's death satisfies divine wrath against sin. (2) Expiation: an offering that covers, cleanses, or removes sin. C. H. Dodd argued in the 1930s that hilastērion in Septuagint usage names the cleansing of sin, not the placation of wrath, and this reading dominated mid-20th-century English mainline scholarship. (3) Mercy seat: the Septuagint uses hilastērion for the kapporet, the lid of the ark of the covenant on which the high priest sprinkled blood on Yom Kippur (Lev 16). On this reading — defended by Daniel Bailey, N. T. Wright, and others — Paul is naming Christ as the Day of Atonement meeting-place where God's holiness and human sin are dealt with.\n\nThe English translation tradition has tracked these debates. KJV uses \"propitiation\" (inherited from the Vulgate's propitiationem); RSV famously switched to \"expiation\"; NIV reverted to \"sacrifice of atonement\"; NRSV used \"sacrifice of atonement\"; NLT uses \"sacrifice for sin.\" \"Mercy seat\" appears in footnotes more than text. The atonement theology each choice implies is not subtle: propitiation centers wrath, expiation centers cleansing, mercy seat centers covenant-meeting.",
+    renderings: [
+      { translation: "BSB", text: "God presented Him as the atoning sacrifice" },
+      { translation: "WEB", text: "whom God set forth to be an atoning sacrifice" },
+      { translation: "KJV", text: "Whom God hath set forth to be a propitiation" },
+      { translation: "NRSVue (paid)", text: "whom God put forward as a sacrifice of atonement" },
+    ],
+    tags: ["atonement"],
+  },
+  {
+    id: "1co-6-9-porneia",
+    bookSlug: "1-corinthians",
+    chapter: 6,
+    verses: [9, 13, 18],
+    headline: "porneia: \"sexual immorality,\" or a specific list?",
+    term: "porneia",
+    script: "πορνεία",
+    language: "Greek",
+    summary:
+      "Porneia is the New Testament's catch-all term for sexual wrong. Its original sense is tied to porn­ē (prostitute) — sex involving a prostitute — but by the 1st century it had widened to a general category. What that category covered, and which behaviors fall inside it, is the long argument.",
+    body:
+      "Porneia originally named sex involving a pornē (prostitute). By the 1st century CE its usage had widened in Jewish and early Christian texts to a general category of sexual wrong — but the boundaries of that category are exactly the contested question. In a Jewish context, porneia often referred to the sexual prohibitions of Leviticus 18 and 20 (incest, adultery, male same-sex intercourse, bestiality). In Greco-Roman context it could name prostitution, fornication outside marriage, or sex with slaves.\n\nThe interpretive stakes are large because porneia appears in: the Jerusalem Council's prohibitions on Gentile converts (Acts 15:20, 29), Jesus's exception clause for divorce (Matt 5:32, 19:9), and most of Paul's vice lists. What counts as porneia in each context shapes Christian sexual ethics across denominations.\n\nTraditional readings (Robert Gagnon, Preston Sprinkle) treat porneia as a broad category covering all extramarital and same-sex intercourse, anchored in the Levitical prohibitions. Affirming readings (James Brownson, William Loader) argue porneia named a specific cultural register — temple prostitution, exploitative sex, coerced sex — and that extending it categorically to monogamous same-sex relationships imports modern categories into a 1st-century word. The textual evidence supports a long argument; the lexicons (BDAG, Loader's 5-volume monograph) catalog the range without settling it.",
+    renderings: [
+      { translation: "BSB", text: "Flee from sexual immorality" },
+      { translation: "WEB", text: "Flee sexual immorality" },
+      { translation: "KJV", text: "Flee fornication" },
+    ],
+    tags: ["sexuality"],
+  },
+  {
+    id: "psa-23-1-chesed",
+    bookSlug: "psalms",
+    chapter: 23,
+    verses: [6],
+    headline: "chesed: \"mercy,\" \"lovingkindness,\" or covenant loyalty?",
+    term: "chesed",
+    script: "חֶסֶד",
+    language: "Hebrew",
+    summary:
+      "Chesed is one of the central theological words of the Hebrew Bible — and one of the hardest to render in English. It names covenant loyalty, faithful love that exceeds obligation. \"Mercy\" (KJV) misses the covenantal weight; \"lovingkindness\" tries to compensate by inventing an English compound; \"steadfast love\" (RSV/NRSV) is a paraphrase.",
+    body:
+      "Chesed appears about 245 times in the Hebrew Bible. It names the kind of love that holds together a covenant relationship — love that does what loyalty requires, but also love that exceeds the strict letter of obligation, doing more than is owed. It is the word for the love between Ruth and Naomi (Ruth 1:8; 3:10), between David and Jonathan (1 Sam 20:8, 14-15), and pre-eminently for God's covenant love for Israel (Ex 34:6-7; Ps 136 — twenty-six repetitions of ki l'olam chasdo).\n\nNo English word maps cleanly. The KJV's \"mercy\" or \"lovingkindness\" captures the warmth but misses the covenant. The RSV's \"steadfast love\" gestures at faithfulness but is wordy. JPS translations often use \"kindness\" or \"faithfulness\" depending on context. Robert Alter renders chesed variously as \"kindness,\" \"faithful kindness,\" or \"steadfast kindness\" depending on register. Some commentators argue chesed should be transliterated and footnoted — like shalom, it carries too much for English.\n\nWhat's at stake: when readers encounter \"mercy\" in Psalm 23:6 (\"surely goodness and mercy shall follow me\"), the English connotation is divine forgiveness or pity. The Hebrew sense is covenant loyalty — God's chesed pursuing the psalmist not because the psalmist is pitiable but because God is faithful to the covenant. The theology shifts with the gloss.",
+    renderings: [
+      { translation: "BSB", text: "Surely goodness and mercy will follow me" },
+      { translation: "WEB", text: "Surely goodness and loving kindness shall follow me" },
+      { translation: "KJV", text: "Surely goodness and mercy shall follow me" },
+      { translation: "Alter", text: "Let but goodness and kindness pursue me" },
+      { translation: "JPS (Jewish)", text: "Only goodness and steadfast love shall pursue me" },
+    ],
+    tags: ["atonement"],
+  },
+  {
+    id: "amo-5-24-mishpat-tzedakah",
+    bookSlug: "amos",
+    chapter: 5,
+    verses: [24],
+    headline: "mishpat / tzedakah: \"justice,\" \"righteousness,\" or social order?",
+    term: "mishpat / tzedakah",
+    script: "מִשְׁפָּט / צְדָקָה",
+    language: "Hebrew",
+    summary:
+      "Hebrew mishpat (\"justice,\" \"judgment\") and tzedakah (\"righteousness,\" \"right relationship\") are paired throughout the prophets. English translations often split them — \"justice\" for one, \"righteousness\" for the other — and lose the prophets' insistence that righteousness IS social justice.",
+    body:
+      "Mishpat names the right ordering of community life: the judgments a court makes, the standards a society holds, the way the vulnerable are treated. Tzedakah names being in right relationship — to God, to neighbor, to the covenant community. The two words are paired throughout the Hebrew Bible (Gen 18:19; Isa 1:21; 9:7; 28:17; Jer 22:3; Ezek 18:5, 21; Amos 5:7, 24; Mic 6:8), and the pairing is not redundant — it specifies that being in right relationship (tzedakah) shows up concretely as right social order (mishpat).\n\nEnglish has split these into \"justice\" and \"righteousness,\" which carry mostly separate connotations in modern usage — \"justice\" sounds civic and procedural; \"righteousness\" sounds personal and moral. The Hebrew Bible uses them as a hendiadys: one reality named twice. When Amos 5:24 says \"let mishpat roll down like waters and tzedakah like a perennial stream,\" he is not naming two virtues; he is naming one — a society where right relationship is enacted as social justice. Splitting the words flattens the protest.\n\nThis matters interpretively. Christian usage of \"righteousness\" has often domesticated it into personal piety — being a righteous person means being morally good. The Hebrew register, especially in the prophets, anchors righteousness in how the poor and the marginalized are treated. Reading the New Testament \"righteousness\" (dikaiosynē) language back through the Hebrew clarifies why Paul's gospel of \"the righteousness of God\" is not merely about individual standing but about cosmic restoration of right relations (the central argument of N. T. Wright's Justification).",
+    renderings: [
+      { translation: "BSB", text: "let justice roll on like a river, and righteousness like an ever-flowing stream" },
+      { translation: "WEB", text: "let justice roll on like rivers, and righteousness like a mighty stream" },
+      { translation: "KJV", text: "let judgment run down as waters, and righteousness as a mighty stream" },
+      { translation: "JPS (Jewish)", text: "Let justice well up like water, righteousness like an unfailing stream" },
+    ],
+    tags: ["authority"],
+  },
+  {
+    id: "isa-9-6-shalom",
+    bookSlug: "isaiah",
+    chapter: 9,
+    verses: [6, 7],
+    headline: "shalom: \"peace,\" or wholeness, completeness, flourishing?",
+    term: "shalom",
+    script: "שָׁלוֹם",
+    language: "Hebrew",
+    summary:
+      "Shalom is far wider than English \"peace.\" Its semantic core is wholeness, completeness, well-being — peace is one expression of that wholeness, not the whole. \"Prince of Peace\" (Isaiah 9:6) renders Sar Shalom; the Hebrew titles a ruler of cosmic completeness, not a pacifist.",
+    body:
+      "Shalom occurs over 200 times in the Hebrew Bible. Its root means \"to be whole, complete, sound, intact.\" From that core meaning come the more specific senses: peace (the absence of war is one form of intactness), prosperity (a household that is whole and provided for), health (bodily intactness), and the covenant well-being that comes from right relation to God. Greeting someone with shalom asks after their wholeness across all these dimensions.\n\nEnglish \"peace\" is narrower. It primarily names the absence of conflict (international peace, inner peace, peace and quiet). Translating shalom monolithically as \"peace\" preserves the most common register but loses the wider semantic field. In particular, \"Prince of Peace\" in Isaiah 9:6 has come to sound like a pacifist title — a ruler who avoids war. The Hebrew Sar Shalom names a ruler whose reign brings wholeness, completeness, and flourishing to the people — political stability, economic provision, covenant fidelity, and yes, peace. The pacifist reading is one inference from that wholeness, not the title itself.\n\nWalter Brueggemann's Peace and Cornelius Plantinga's Not the Way It's Supposed to Be both build sustained theological cases for translating and preaching shalom as cosmic wholeness rather than absence of conflict. The translation choice shapes how Christians understand the kingdom of God: as ceasefire, or as restored flourishing.",
+    renderings: [
+      { translation: "BSB", text: "Wonderful Counselor, Mighty God, Everlasting Father, Prince of Peace" },
+      { translation: "WEB", text: "Wonderful Counselor, Mighty God, Everlasting Father, Prince of Peace" },
+      { translation: "KJV", text: "Wonderful, Counsellor, The mighty God, The everlasting Father, The Prince of Peace" },
+      { translation: "JPS (Jewish)", text: "Pele-joez-el-gibbor-Abi-ad-sar-shalom" },
+    ],
+    tags: ["creation", "messianic"],
+  },
+  {
+    id: "1jn-4-8-agape",
+    bookSlug: "1-john",
+    chapter: 4,
+    verses: [7, 8, 16],
+    headline: "agapē, phileō, eros: did Greek really have a hierarchy of love?",
+    term: "agapē / phileō / erōs / storgē",
+    script: "ἀγάπη / φιλέω / ἔρως / στοργή",
+    language: "Greek",
+    summary:
+      "C. S. Lewis's Four Loves popularized the idea that Greek had four distinct kinds of love — agapē highest, eros lowest. The actual Greek usage is much messier; agapē and phileō overlap heavily in the New Testament, including in John 21's famous Peter dialogue.",
+    body:
+      "The popular Christian teaching — that Greek has four distinct words for love arranged hierarchically — comes mostly from C. S. Lewis's The Four Loves (1960), which itself drew on Anders Nygren's Agape and Eros (1930). The claim is that agapē names the self-giving, sacrificial love unique to Christian theology; phileō names friendship; erōs names romantic/sexual love; and storgē names familial affection. This neat schema gets preached often and is mostly not supported by 1st-century Greek usage.\n\nIn practice, agapē and phileō overlap heavily in Septuagint and New Testament Greek. The LXX uses agapaō for Amnon's incestuous love for Tamar (2 Sam 13:1) and for love of money (Eccl 5:10) — hardly sacrificial self-giving. The Gospel of John uses agapaō and phileō more or less interchangeably (cf. John 3:35 with 5:20; 14:23 with 16:27). The famous John 21 dialogue, where Jesus asks Peter three times \"do you agapaō me?\" and Peter answers \"I phileō you\" — and then on the third round Jesus switches to phileō — has been preached for centuries as Jesus condescending to Peter's weaker love. Most modern Johannine scholarship reads it as stylistic variation, not theological gradient.\n\nThis matters because the Four Loves framework shapes Christian preaching about love, sexuality, and friendship. The Greek itself doesn't support a clean hierarchy; the theology built atop it should be more carefully grounded than \"the Greeks had a special word for the love we mean.\" 1 John 4:8 (\"God is agapē\") is a serious theological claim; the seriousness is not because agapē is a uniquely Christian word but because of what John says about it.",
+    renderings: [
+      { translation: "BSB", text: "God is love" },
+      { translation: "WEB", text: "God is love" },
+      { translation: "KJV", text: "God is love" },
+    ],
+    tags: ["atonement"],
+  },
+  {
+    id: "act-2-42-koinonia",
+    bookSlug: "acts",
+    chapter: 2,
+    verses: [42, 44, 45],
+    headline: "koinōnia: \"fellowship,\" \"communion,\" or shared property?",
+    term: "koinōnia",
+    script: "κοινωνία",
+    language: "Greek",
+    summary:
+      "Koinōnia in 1st-century Greek named partnership, shared participation in something — including shared finances. Acts 2:42 places it next to having all things in common (v44-45). \"Fellowship\" — the standard English gloss — sanitizes the economic register.",
+    body:
+      "Koinōnia comes from koinos (\"common\") and names participation, partnership, sharing — including the very concrete sharing of resources. In 1st-century Greek the word was used for business partnerships, civic associations, marriage as shared household economy, and any voluntary arrangement where participants held things in common.\n\nActs 2:42 names koinōnia as one of four marks of the earliest Jerusalem community — the apostles' teaching, koinōnia, breaking of bread, and the prayers. Two verses later, Luke spells out what koinōnia meant in practice: \"all who believed were together and had all things in common; they would sell their possessions and goods and distribute the proceeds to all, as any had need.\" Paul uses the same word for the Macedonian and Achaean churches' financial collection for the Jerusalem poor (Rom 15:26; 2 Cor 8:4; 9:13). Koinōnia in the New Testament includes the church's pocketbook.\n\nThe English \"fellowship\" — the KJV gloss inherited by most translations — has narrowed in modern usage to social gathering: coffee hour, small group, hangtime. Translating koinōnia as \"fellowship\" in Acts 2:42 and the Pauline collection texts has the unfortunate effect of separating early Christian sharing of life from early Christian sharing of money. Modern translators face a choice: retain \"fellowship\" and accept the loss, expand to \"sharing in common life\" or \"partnership,\" or — as some recent commentators (Justo González, Acts: A Theological Commentary) suggest — translate the Acts 2 occurrences as \"sharing all things\" to preserve the economic register.",
+    renderings: [
+      { translation: "BSB", text: "They devoted themselves to the apostles' teaching and to the fellowship" },
+      { translation: "WEB", text: "They continued steadfastly in the apostles' teaching and fellowship" },
+      { translation: "KJV", text: "they continued stedfastly in the apostles' doctrine and fellowship" },
+    ],
+    tags: ["authority"],
+  },
+  {
+    id: "rom-12-2-metanoia",
+    bookSlug: "romans",
+    chapter: 12,
+    verses: [2],
+    headline: "metanoia: \"repent,\" or change of mind?",
+    term: "metanoia / metamorphoō",
+    script: "μετάνοια / μεταμορφόω",
+    language: "Greek",
+    summary:
+      "Metanoia is built from meta- (after, with, change) + nous (mind). Its lexical sense is \"change of mind\" or \"change of perception.\" The English \"repent\" — inherited from Latin paenitentia (\"penance\") — narrows it to remorse for sin, which is one possible outcome of metanoia but not its lexical core.",
+    body:
+      "Metanoia appears 22 times in the New Testament and the verb metanoeō 34 times — the central Greek term for the transformation the gospel calls for. Lexically the word means \"change of mind,\" \"change of perception,\" \"after-thought\" in the sense of revised understanding. In classical Greek it ranged from a change of plans to a fundamental reorientation of how one sees something.\n\nThe Latin translation tradition rendered metanoia as paenitentia (\"penance,\" \"sorrow for sin\") — a choice that, when inherited by English as \"repent\" / \"repentance,\" narrowed the semantic range considerably. Erasmus famously objected in his 1516 Greek New Testament notes that paenitentia missed the point: the Greek calls for a change of mind that may or may not include sorrow. Luther's 1517 Theses opened with the claim that when Christ said metanoeite, \"he willed the entire life of believers to be one of repentance\" — but Luther was already arguing against the late-medieval reduction of metanoia to the sacrament of penance.\n\nThis matters for how the New Testament's call to transformation gets heard. \"Repent\" in modern English often sounds like \"feel bad about your sin\" — a moment of remorse. The Greek metanoia names something larger: a reorientation of how one sees God, self, neighbor, and the world. John the Baptist's metanoia is not a sad feeling but a reorganized life (Luke 3:10-14). Paul's metamorphousthe in Romans 12:2 (\"be transformed by the renewing of your nous\") names the same process from the other side — letting one's mind be reshaped. Translators face a choice: retain \"repent\" and accept the late-medieval narrowing, or expand to \"change your mind,\" \"think differently,\" \"reorient,\" \"be transformed.\"",
+    renderings: [
+      { translation: "BSB", text: "be transformed by the renewing of your mind" },
+      { translation: "WEB", text: "be transformed by the renewing of your mind" },
+      { translation: "KJV", text: "be ye transformed by the renewing of your mind" },
+    ],
+    tags: ["atonement"],
+  },
+  {
+    id: "luk-1-46-magnificat",
+    bookSlug: "luke",
+    chapter: 1,
+    verses: [51, 52, 53],
+    headline: "Mary's Magnificat: completed action or future hope?",
+    term: "aorist + hyperēphanous",
+    script: "καθεῖλεν · ὕψωσεν · ἐνέπλησεν",
+    language: "Greek",
+    summary:
+      "Mary's song uses Greek aorist verbs — past-tense forms — to describe God scattering the proud, bringing down rulers, lifting up the lowly, filling the hungry, sending the rich away empty. Translators must decide: render as past (\"he has brought down\") and follow the Greek tense literally, or as future hope. The political register changes either way.",
+    body:
+      "The Magnificat (Luke 1:46-55) is structured around six aorist verbs describing what God has done: scattered the proud, brought down rulers, lifted up the lowly, filled the hungry, sent the rich away empty, helped Israel. Greek aorist is typically translated as English simple past — \"he scattered, he brought down.\" That literal rendering produces a song that announces God has already overturned the social order — before Jesus is even born.\n\nSome translators have softened this. Renderings like \"he scatters the proud,\" \"he brings down rulers,\" treat the aorists as gnomic — describing what God characteristically does — and pull the political claim out of the past tense into a general principle. Other translators, especially those reading Luke as a politically charged narrative, retain the past-tense rendering: God has already done these things, in the conception of the messiah, before his birth or ministry.\n\nThe interpretive stakes are not minor. The Magnificat's reception history includes its banning from public recitation in three different colonial contexts (British India, Guatemala under the junta, Argentina under the generals) for being politically dangerous — and that danger is sharper if the verbs are past indicative announcements of accomplished reversal than if they are general principles awaiting fulfillment. Robert Alter's translation principles (preserve the tense of the source language; do not modernize what is unsettling) would push toward retaining the aorist as past. Most English translations split the difference, producing softer language than the Greek demands.",
+    renderings: [
+      { translation: "BSB", text: "He has performed mighty deeds with His arm… He has brought down rulers from their thrones, but has exalted the humble" },
+      { translation: "WEB", text: "He has shown strength with his arm. He has scattered the proud… He has put down princes from their thrones. And has exalted the lowly" },
+      { translation: "KJV", text: "He hath shewed strength with his arm; he hath scattered the proud… He hath put down the mighty from their seats, and exalted them of low degree" },
+    ],
+    tags: ["authority"],
+  },
+  {
     id: "phm-1-doulos",
     bookSlug: "philemon",
     chapter: 1,

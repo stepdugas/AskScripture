@@ -51,8 +51,8 @@ export default function SettingsPage() {
             </Group>
 
             <Group
-              label="Theological lens"
-              help="Shapes how AI answers are framed. The text is the same; the framing changes."
+              label="Your reading background"
+              help="Where you're coming from when you read the Bible. Optional — used as context for AI study chat. Never displayed publicly."
               htmlFor="pref-lens"
             >
               <select
@@ -73,8 +73,8 @@ export default function SettingsPage() {
             </Group>
 
             <Group
-              label="Denomination"
-              help="Used as additional context for tradition-specific questions. Not displayed."
+              label="Religious tradition (optional)"
+              help="Adds context for tradition-specific questions — Catholic vs Reformed vs Jewish readings of a passage, for instance. Leave as 'None' to skip; never displayed."
               htmlFor="pref-denomination"
             >
               <select
@@ -97,8 +97,8 @@ export default function SettingsPage() {
             </Group>
 
             <Group
-              label="Default chat mode"
-              help="The starting mode when you open Study Chat. You can switch anytime in the drawer."
+              label="How AI should answer you"
+              help="The starting voice when you open Study Chat — Scholarly, Devotional, Affirming, etc. You can switch any time in the drawer."
               htmlFor="pref-chat-mode"
             >
               <select

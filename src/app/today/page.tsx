@@ -1,44 +1,43 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { dailyVerse } from "@/data/daily-verses";
-import { parseRef, refToHref } from "@/lib/bible/parse-ref";
-import {
-  readDailyContent,
-  generateAndStoreDailyContent,
-  DAILY_KINDS,
-  type DailyKind,
-} from "@/lib/daily-content";
-import { features } from "@/lib/env";
+import { BIAS_FLAGS } from "@/data/bias-flags";
+import { bookBySlug } from "@/lib/bible/books";
 import { GenericPageSkeleton } from "@/components/skeletons";
-import { Markdown } from "@/components/markdown";
 
 export const metadata: Metadata = {
-  title: "Today",
+  title: "Today's translation debate",
   description:
-    "Today's shared devotional, family devotional, sermon outline, and story — generated once per day and free for everyone.",
+    "One contested Bible word, one debate, every day. arsenokoitai, kephalē, almah, gehenna, shalom — a new word study every day, free for everyone.",
 };
 
-const KIND_LABELS = {
-  devotional: "Personal devotional",
-  family: "Family devotional",
-  sermon: "Sermon outline",
-  story: "Story",
-} as const;
+/**
+ * Pick today's contested-word entry by deterministic day-of-year rotation.
+ * Same day, same word for everyone — no randomness, no AI cost.
+ */
+function todayFlag(d: Date) {
+  const start = Date.UTC(d.getUTCFullYear(), 0, 0);
+  const now = Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate());
+  const dayOfYear = Math.floor((now - start) / 86400000);
+  return BIAS_FLAGS[dayOfYear % BIAS_FLAGS.length];
+}
 
-const KIND_BLURBS = {
-  devotional: "A 350-500 word reflection on today's passage.",
-  family: "For reading with kids ages 6-12. Includes two discussion questions.",
-  sermon: "A 25-30 minute preaching outline with big idea + 3-4 moves.",
-  story: "Today's passage retold cinematically.",
-} as const;
-
-type FromRedirect = { from?: string; kind?: string };
+const TAG_LABELS: Record<string, string> = {
+  gender: "Gender",
+  sexuality: "Sexuality",
+  creation: "Creation",
+  afterlife: "Afterlife",
+  atonement: "Atonement",
+  authority: "Authority",
+  slavery: "Slavery",
+  christology: "Christology",
+  messianic: "Messianic",
+};
 
 export default function TodayPage({
   searchParams,
 }: {
-  searchParams: Promise<FromRedirect>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   return (
     <Suspense fallback={<GenericPageSkeleton />}>
@@ -50,142 +49,116 @@ export default function TodayPage({
 async function Content({
   searchParams,
 }: {
-  searchParams: Promise<FromRedirect>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const sp = await searchParams;
-  const today = dailyVerse();
-  const todayParsed = parseRef(today.ref);
-
-  // Resolve each kind: read cached content; if missing AND Anthropic + Supabase
-  // are configured, attempt a lazy generation. This makes "/today" tolerant of
-  // cron misses or first-launch days.
-  const items = await Promise.all(
-    DAILY_KINDS.map(async (kind) => {
-      const content = await resolveDailyKind(kind);
-      return { kind, content };
-    }),
-  );
+  // Awaiting searchParams anchors this component to request time, which
+  // unblocks `new Date()` under cacheComponents.
+  await searchParams;
+  const flag = todayFlag(new Date());
+  const book = bookBySlug(flag.bookSlug);
+  const passageRef = `${book?.name ?? flag.bookSlug} ${flag.chapter}:${flag.verses.join(",")}`;
+  const passageHref = `/${flag.bookSlug}/${flag.chapter}`;
 
   return (
     <div className="mx-auto max-w-[1100px] px-6 lg:px-10 pt-16 pb-24">
-      {sp.from === "generate" && sp.kind && (
-        <RedirectBanner kind={sp.kind} />
-      )}
-
       <div className="text-[0.6875rem] uppercase tracking-[0.16em] text-ink-subtle font-medium">
-        Today · Free for everyone
+        Today's translation debate · Free for everyone
       </div>
-      <h1 className="serif mt-3 text-[2.75rem] leading-[1.05] tracking-tight text-ink font-semibold">
-        {today.ref}
+      <h1 className="serif mt-3 text-[2.75rem] leading-[1.05] tracking-tight text-ink font-semibold max-w-[24ch]">
+        {flag.headline}
       </h1>
-      <p className="mt-4 text-[1rem] leading-7 text-ink-muted max-w-[58ch]">
-        {today.note}
-      </p>
-      {todayParsed && (
-        <div className="mt-5 flex flex-wrap items-center gap-3 text-[0.8125rem]">
-          <Link
-            href={refToHref(todayParsed)}
-            className="inline-flex h-10 items-center px-4 bg-accent text-paper text-[0.8125rem] font-medium hover:bg-accent-2 transition-colors"
-          >
-            Read {today.ref}
-          </Link>
-          <Link href="/pricing" className="text-ink-muted hover:text-accent">
-            Generate from any passage with Pro &rarr;
-          </Link>
-        </div>
-      )}
 
-      <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-12 border-t border-rule pt-10">
-        {items.map(({ kind, content }) => (
-          <section key={kind} id={`kind-${kind}`}>
-            <div className="text-[0.6875rem] uppercase tracking-[0.16em] text-ink-subtle font-medium">
-              {KIND_LABELS[kind]}
-            </div>
-            <p className="mt-1 text-[0.75rem] text-ink-muted">
-              {KIND_BLURBS[kind]}
-            </p>
-            {content ? (
-              <article className="mt-6 serif text-[1rem] leading-[1.85] text-ink">
-                <Markdown>{content}</Markdown>
-              </article>
-            ) : (
-              <NotReady kind={kind} />
-            )}
-          </section>
-        ))}
+      <div className="mt-6 flex flex-wrap items-baseline gap-x-4 gap-y-2">
+        <Link
+          href={passageHref}
+          className="font-mono text-[0.875rem] text-ink-muted hover:text-accent"
+        >
+          {passageRef}
+        </Link>
+        <span className="font-mono text-[1rem] text-flag">{flag.script}</span>
+        <span className="font-mono text-[0.75rem] text-ink-subtle">
+          {flag.term} · {flag.language}
+        </span>
+      </div>
+
+      <div className="mt-12 grid grid-cols-12 gap-x-6 lg:gap-x-10 border-t border-rule pt-10">
+        <div className="col-span-12 lg:col-span-8">
+          <div className="text-[0.6875rem] uppercase tracking-[0.16em] text-ink-subtle font-medium">
+            What's at stake
+          </div>
+          <p className="serif mt-3 text-[1.125rem] leading-[1.75] text-ink">
+            {flag.summary}
+          </p>
+
+          <div className="mt-10 text-[0.6875rem] uppercase tracking-[0.16em] text-ink-subtle font-medium">
+            The debate
+          </div>
+          <div className="serif mt-3 text-[1rem] leading-[1.85] text-ink space-y-4">
+            {flag.body.split("\n\n").map((para, i) => (
+              <p key={i}>{para}</p>
+            ))}
+          </div>
+
+          <div className="mt-10 flex flex-wrap gap-3">
+            <Link
+              href={`/word-study/${flag.id}`}
+              className="inline-flex h-10 items-center px-4 bg-accent text-paper text-[0.8125rem] font-medium hover:bg-accent-2 transition-colors"
+            >
+              Read the full entry →
+            </Link>
+            <Link
+              href={passageHref}
+              className="inline-flex h-10 items-center px-4 border border-rule-strong text-ink text-[0.8125rem] font-medium hover:border-accent hover:text-accent transition-colors"
+            >
+              Read {passageRef} in context
+            </Link>
+          </div>
+        </div>
+
+        <aside className="col-span-12 lg:col-span-4 lg:pl-2">
+          <div className="text-[0.6875rem] uppercase tracking-[0.16em] text-ink-subtle font-medium">
+            How translations render it
+          </div>
+          <ul className="mt-3 divide-y divide-rule">
+            {flag.renderings.map((r, i) => (
+              <li key={i} className="py-3">
+                <div className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-ink-subtle font-medium">
+                  {r.translation}
+                </div>
+                <p className="serif mt-1 text-[0.9375rem] leading-6 text-ink">
+                  "{r.text}"
+                </p>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-8 text-[0.6875rem] uppercase tracking-[0.16em] text-ink-subtle font-medium">
+            Tags
+          </div>
+          <div className="mt-2 flex flex-wrap gap-1.5">
+            {flag.tags.map((t) => (
+              <span
+                key={t}
+                className="font-mono text-[0.6875rem] text-ink-muted bg-paper-2 px-2 py-1"
+              >
+                {TAG_LABELS[t] ?? t}
+              </span>
+            ))}
+          </div>
+        </aside>
       </div>
 
       <p className="mt-16 pt-6 border-t border-rule text-[0.75rem] text-ink-muted max-w-[68ch]">
-        These are generated once per day for everyone, not per-user, so the
-        site can offer them for free. Want a devotional, sermon, or story from
-        a passage you choose?{" "}
+        A new translation debate every day. No login. No paywall. Browse the{" "}
+        <Link href="/word-study" className="text-accent hover:underline">
+          full index
+        </Link>{" "}
+        of contested Bible words, or{" "}
         <Link href="/pricing" className="text-accent hover:underline">
-          Pro is $5/month
-        </Link>
-        .
+          go Pro
+        </Link>{" "}
+        for unlimited AI study chat and custom passage generation.
       </p>
-    </div>
-  );
-}
-
-/**
- * Try cache first. If empty, fall back to generating + storing.
- *
- * Concurrency guard: a single (day, kind) in-flight Promise is shared across
- * all concurrent requests so a traffic burst before the daily cron fires
- * doesn't pay for N×4 Sonnet calls. The first request kicks off the LLM call;
- * everyone else awaits the same Promise. Cleared after settlement so the next
- * day starts fresh.
- */
-const inflight = new Map<string, Promise<string | null>>();
-
-async function resolveDailyKind(kind: DailyKind): Promise<string | null> {
-  const cached = await readDailyContent(kind);
-  if (cached) return cached.content;
-  if (!features.ai || !features.supabase) return null;
-
-  const day = new Date().toISOString().slice(0, 10);
-  const key = `${day}:${kind}`;
-  const existing = inflight.get(key);
-  if (existing) return existing;
-
-  const task = (async () => {
-    try {
-      const generated = await generateAndStoreDailyContent(kind);
-      return generated?.content ?? null;
-    } catch {
-      return null;
-    }
-  })();
-  inflight.set(key, task);
-  try {
-    return await task;
-  } finally {
-    inflight.delete(key);
-  }
-}
-
-function RedirectBanner({ kind }: { kind: string }) {
-  const label = (KIND_LABELS as Record<string, string>)[kind] ?? "Content";
-  return (
-    <div className="mb-8 border-l-2 border-accent bg-paper-2 px-4 py-3 text-[0.875rem] leading-6 text-ink">
-      <div className="text-[0.6875rem] uppercase tracking-[0.16em] text-ink-subtle font-medium mb-0.5">
-        From your link
-      </div>
-      Custom-passage generation is a{" "}
-      <Link href="/pricing" className="text-accent hover:underline">
-        Pro feature
-      </Link>
-      . Today&rsquo;s shared {label.toLowerCase()} is below — free for everyone.
-    </div>
-  );
-}
-
-function NotReady({ kind }: { kind: string }) {
-  return (
-    <div className="mt-6 border border-rule p-5 text-[0.875rem] text-ink-muted leading-6">
-      Today&rsquo;s {kind} is queued — generation will start shortly. Refresh
-      in a moment, or read the passage above in the meantime.
     </div>
   );
 }

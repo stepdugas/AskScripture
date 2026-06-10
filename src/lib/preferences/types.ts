@@ -8,6 +8,8 @@ export type TheologicalLens =
 
 export type Denomination =
   | "none"
+  | "deconstructing"
+  | "curious"
   | "catholic"
   | "orthodox"
   | "anglican"
@@ -18,6 +20,7 @@ export type Denomination =
   | "pentecostal"
   | "anabaptist"
   | "non-denominational"
+  | "jewish"
   | "other";
 
 export type FontSize = "comfortable" | "compact" | "large";
@@ -49,16 +52,18 @@ export const DEFAULT_PREFERENCES: UserPreferences = {
 };
 
 export const LENS_LABELS: Record<TheologicalLens, string> = {
-  none: "No declared lens",
-  ecumenical: "Ecumenical",
+  none: "I'd rather not say",
+  ecumenical: "Open across traditions",
   affirming: "Affirming / inclusive",
   evangelical: "Evangelical",
   mainline: "Mainline Protestant",
-  academic: "Academic / critical",
+  academic: "Academic / non-religious",
 };
 
 export const DENOMINATION_LABELS: Record<Denomination, string> = {
-  none: "None / not affiliated",
+  none: "None — or I'd rather not say",
+  deconstructing: "I left the church (or I'm working on it)",
+  curious: "Spiritually curious / not Christian",
   catholic: "Catholic",
   orthodox: "Orthodox",
   anglican: "Anglican / Episcopal",
@@ -69,6 +74,7 @@ export const DENOMINATION_LABELS: Record<Denomination, string> = {
   pentecostal: "Pentecostal / Charismatic",
   anabaptist: "Anabaptist / Mennonite",
   "non-denominational": "Non-denominational",
+  jewish: "Jewish",
   other: "Other",
 };
 

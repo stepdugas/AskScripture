@@ -5,10 +5,7 @@ import type { Metadata } from "next";
 import { ChapterNav } from "@/components/chapter-nav";
 import { bookBySlug } from "@/lib/bible/books";
 import { getChapter } from "@/lib/bible/api";
-import {
-  FREE_TRANSLATIONS,
-  getTranslationOrDefault,
-} from "@/lib/bible/translations";
+import { getTranslationOrDefault } from "@/lib/bible/translations";
 import { diffTexts } from "@/lib/bible/diff";
 import type { ChapterContentItem } from "@/lib/bible/types";
 import { CompareSwitcher } from "@/components/compare-switcher";
@@ -62,15 +59,21 @@ async function CompareContent({
     notFound();
   }
 
-  const a = getTranslationOrDefault(sp.a ?? "BSB");
-  const b = getTranslationOrDefault(sp.b ?? "eng_kjv");
+  const aRaw = getTranslationOrDefault(sp.a ?? "BSB");
+  const bRequested = getTranslationOrDefault(sp.b ?? "eng_kjv");
+  // Defensive: if the two pickers resolved to the same translation, push the
+  // right side to KJV (or BSB if A is already KJV). Prevents an empty-diff page.
+  const a = aRaw;
+  const b =
+    bRequested.id === aRaw.id
+      ? getTranslationOrDefault(aRaw.id === "eng_kjv" ? "BSB" : "eng_kjv")
+      : bRequested;
 
   const [chapterA, chapterB] = await Promise.all([
     getChapter(a.id, book.id, chapNum),
     getChapter(b.id, book.id, chapNum),
   ]);
 
-  // Extract verses keyed by number from each chapter
   const versesA = collectVerses(chapterA.chapter.content);
   const versesB = collectVerses(chapterB.chapter.content);
   const allVerseNumbers = Array.from(
@@ -78,9 +81,8 @@ async function CompareContent({
   ).sort((x, y) => x - y);
 
   return (
-    <>
     <div className="mx-auto max-w-[1320px] px-6 lg:px-10 pt-10 pb-20">
-      <div className="hairline pb-4 mb-8 grid grid-cols-12 gap-6 items-end">
+      <div className="hairline pb-5 mb-10 grid grid-cols-12 gap-6 items-end">
         <div className="col-span-12 lg:col-span-7">
           <div className="text-[0.6875rem] uppercase tracking-[0.16em] text-ink-subtle font-medium">
             Compare translations
@@ -92,7 +94,7 @@ async function CompareContent({
             <span className="text-ink-muted font-normal">{chapNum}</span>
           </h1>
         </div>
-        <div className="col-span-12 lg:col-span-5 flex flex-col items-stretch lg:items-end gap-2 text-[0.75rem] text-ink-muted">
+        <div className="col-span-12 lg:col-span-5 flex flex-col items-stretch lg:items-end gap-3 text-[0.75rem] text-ink-muted">
           <CompareSwitcher current={{ a: a.id, b: b.id }} />
           <Link
             href={`/${book.slug}/${chapNum}`}
@@ -111,29 +113,13 @@ async function CompareContent({
         </aside>
 
         <div className="col-span-12 lg:col-span-10">
-          {/* Header row showing translation names (lg+) */}
-          <div className="hidden lg:grid grid-cols-2 gap-x-8 pb-3 mb-4 border-b border-rule sticky top-0 bg-paper z-10">
-            <ColumnHeader t={a} />
-            <ColumnHeader t={b} />
+          {/* Desktop column headers — within grid, not sticky inside cell */}
+          <div className="hidden md:grid grid-cols-2 gap-x-8 pb-3 mb-4 border-b border-rule-strong">
+            <ColumnHeader t={a} side="a" />
+            <ColumnHeader t={b} side="b" />
           </div>
 
-          {/* Mobile/tablet — stacked names so each column is labelled inline */}
-          <div className="lg:hidden mb-4 pb-3 border-b border-rule grid grid-cols-2 gap-x-4 text-[0.6875rem]">
-            <div>
-              <div className="font-mono uppercase tracking-[0.16em] text-ink-subtle font-medium">
-                {a.shortName}
-              </div>
-              <div className="serif text-[0.875rem] text-ink mt-0.5">{a.name}</div>
-            </div>
-            <div>
-              <div className="font-mono uppercase tracking-[0.16em] text-ink-subtle font-medium">
-                {b.shortName}
-              </div>
-              <div className="serif text-[0.875rem] text-ink mt-0.5">{b.name}</div>
-            </div>
-          </div>
-
-          <div className="space-y-4">
+          <div className="space-y-0 md:space-y-1">
             {allVerseNumbers.map((n) => {
               const textA = versesA.get(n) ?? "";
               const textB = versesB.get(n) ?? "";
@@ -141,46 +127,71 @@ async function CompareContent({
               return (
                 <div
                   key={n}
-                  className="grid grid-cols-2 gap-x-4 lg:gap-x-8 gap-y-2 py-3 border-b border-rule"
+                  id={`v${n}`}
+                  className="md:grid md:grid-cols-2 md:gap-x-8 py-4 border-b border-rule"
                 >
+                  {/* Mobile: stacked A then B with side labels */}
+                  <div className="md:hidden mb-1 text-[0.6875rem] uppercase tracking-[0.16em] text-ink-subtle font-mono font-medium">
+                    {a.shortName}
+                  </div>
                   <VerseColumn
                     verseNumber={n}
                     segments={left}
-                    translation={a.shortName}
+                    side="a"
                   />
+                  <div className="md:hidden mt-3 mb-1 text-[0.6875rem] uppercase tracking-[0.16em] text-ink-subtle font-mono font-medium">
+                    {b.shortName}
+                  </div>
                   <VerseColumn
                     verseNumber={n}
                     segments={right}
-                    translation={b.shortName}
+                    side="b"
                   />
                 </div>
               );
             })}
           </div>
 
-          <p className="mt-10 text-[0.75rem] text-ink-muted leading-6 max-w-[64ch]">
-            Words highlighted in ink navy were rendered differently between
-            translations. Underlying lexical decisions are documented in the {""}
-            <Link href="/word-study" className="text-accent hover:underline">
-              translation notes index
+          <p className="mt-12 pt-6 border-t border-rule text-[0.75rem] text-ink-muted leading-6 max-w-[64ch]">
+            Highlighted words differ between the two translations. The deeper
+            lexical reasons — when one translator chose “servant” and another
+            chose “slave,” or “virgin” vs. “young woman” — are documented in
+            the{" "}
+            <Link
+              href="/word-study"
+              className="text-accent hover:underline"
+            >
+              translation debates index
             </Link>
             .
           </p>
         </div>
       </div>
     </div>
-    </>
   );
 }
 
-function ColumnHeader({ t }: { t: ReturnType<typeof getTranslationOrDefault> }) {
+function ColumnHeader({
+  t,
+  side,
+}: {
+  t: ReturnType<typeof getTranslationOrDefault>;
+  side: "a" | "b";
+}) {
   return (
     <div>
-      <div className="font-mono text-[0.75rem] text-ink-subtle">
-        {t.shortName}
+      <div
+        className={
+          "text-[0.6875rem] uppercase tracking-[0.16em] font-medium " +
+          (side === "a" ? "text-accent" : "text-flag")
+        }
+      >
+        {side === "a" ? "Left" : "Right"}
+        <span className="mx-1.5 text-ink-subtle">·</span>
+        <span className="text-ink-subtle">{t.shortName}</span>
       </div>
-      <div className="serif text-[1rem] text-ink mt-0.5">{t.name}</div>
-      <div className="text-[0.6875rem] text-ink-muted">
+      <div className="serif text-[1.0625rem] text-ink mt-1">{t.name}</div>
+      <div className="text-[0.75rem] text-ink-muted mt-0.5">
         {t.year ?? "—"} · {t.lens}
       </div>
     </div>
@@ -190,26 +201,24 @@ function ColumnHeader({ t }: { t: ReturnType<typeof getTranslationOrDefault> }) 
 function VerseColumn({
   verseNumber,
   segments,
-  translation,
+  side,
 }: {
   verseNumber: number;
   segments: { kind: "equal" | "diff"; text: string }[];
-  translation: string;
+  side: "a" | "b";
 }) {
+  const diffClass =
+    side === "a"
+      ? "bg-accent/10 text-accent"
+      : "bg-flag/10 text-flag";
   return (
-    <p className="scripture text-[1rem] leading-[1.75]">
-      <span className="font-mono text-[0.625rem] text-ink-subtle mr-2 tabular-nums">
-        {translation}
-      </span>
+    <p className="scripture">
       <sup className="verse-num">{verseNumber}</sup>{" "}
       {segments.map((seg, i) =>
         seg.kind === "equal" ? (
           <span key={i}>{seg.text}</span>
         ) : (
-          <span
-            key={i}
-            className="bg-accent/10 text-accent border-b border-accent/40"
-          >
+          <span key={i} className={diffClass}>
             {seg.text}
           </span>
         ),
