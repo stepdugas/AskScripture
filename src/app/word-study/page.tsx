@@ -4,9 +4,29 @@ import { BIAS_FLAGS } from "@/data/bias-flags";
 import { bookBySlug } from "@/lib/bible/books";
 
 export const metadata: Metadata = {
-  title: "Translation debates",
+  title:
+    "Translation debates: arsenokoitai, kephalē, almah, Junia & contested Bible words",
   description:
-    "An editorial index of contested translation choices — arsenokoitai, kephalē, almah, monogenēs, Junia, ezer, gehenna and more. Each entry is sourced from BDB / HALOT / BDAG / LSJ plus monograph-level scholarship.",
+    "An honest index of contested Bible translation choices — arsenokoitai, malakoi, kephalē, almah, monogenēs, Junia, ezer kenegdo, gehenna, aiōnios, doulos and more. Each entry sourced from BDB / HALOT / BDAG / LSJ plus monograph-level scholarship. No agenda — just the seam between the Hebrew/Greek and the English.",
+  keywords: [
+    "arsenokoitai",
+    "kephalē",
+    "Junia",
+    "almah",
+    "gehenna",
+    "monogenēs",
+    "translation debates",
+    "affirming Bible study",
+    "inclusive Bible",
+    "Bible translation bias",
+    "original Greek Hebrew",
+    "contested Bible passages",
+  ],
+  openGraph: {
+    title: "Translation debates — where translators have made choices for you",
+    description:
+      "arsenokoitai, kephalē, almah, Junia, gehenna and more. An honest, sourced index of contested Bible translation choices.",
+  },
 };
 
 const TAG_LABELS: Record<string, string> = {

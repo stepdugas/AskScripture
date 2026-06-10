@@ -190,9 +190,28 @@ create trigger on_auth_user_created
 --   * A SQL function `public.grant_lifetime(target uuid, value boolean)`
 --     callable by admins only.
 --
--- "Admin" is defined as any auth.users row whose email is in the
--- `app.admin_emails` GUC. The GUC is set per session by the app at sign-in.
--- For now we also allow Supabase Edge superusers via the service_role key.
+-- "Admin" is defined as any auth.users row whose lowercase email is in the
+-- `public.admin_emails` allowlist table. (The original 0002 design used a
+-- Postgres GUC `app.admin_emails`, but hosted Supabase no longer allows
+-- setting custom `app.*` GUCs at the database or role level — supautils
+-- blocks `current_setting('app.admin_emails', true)`. Migration 0007
+-- replaced the GUC approach with this table; this consolidated bootstrap
+-- file ships the table version directly.)
+
+-- Admin allowlist. RLS enabled with no policies + revoked grants means
+-- only the table owner (postgres, via security definer functions) and
+-- service_role can read or write it.
+create table if not exists public.admin_emails (
+  email text primary key
+);
+revoke all on table public.admin_emails from anon, authenticated;
+alter table public.admin_emails enable row level security;
+
+-- Seed the initial admin (must be lowercase). Add more later via:
+--   insert into public.admin_emails (email) values ('other@example.com');
+insert into public.admin_emails (email)
+values ('stepdugas@gmail.com')
+on conflict do nothing;
 
 -- Helper: is the current auth user an admin?
 create or replace function public.is_admin()
@@ -205,16 +224,8 @@ as $$
   select exists (
     select 1
     from auth.users u
+    join public.admin_emails a on lower(u.email) = a.email
     where u.id = auth.uid()
-      and lower(u.email) = any (
-        coalesce(
-          string_to_array(
-            lower(current_setting('app.admin_emails', true)),
-            ','
-          ),
-          array[]::text[]
-        )
-      )
   );
 $$;
 
@@ -250,10 +261,8 @@ begin
 end;
 $$;
 
--- IMPORTANT: in the Supabase dashboard, set the GUC so is_admin() works:
---   Settings → Database → Custom Postgres Config
---   Add:  app.admin_emails = 'stepdugas@gmail.com,other@example.com'
--- (comma-separated, lowercase)
+-- Admin seeding is handled by the `public.admin_emails` table above —
+-- no Supabase dashboard configuration required.
 -- AskScripture migration 0003 — Stripe / paid tier columns
 -- Adds is_pro and stripe_customer_id to profiles, plus an optional donations log.
 

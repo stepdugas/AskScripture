@@ -12,6 +12,13 @@ export type DailyVerse = {
 
 export const DAILY_VERSES: DailyVerse[] = [
   { ref: "Genesis 1:1", note: "The opening line. Notice it starts with action, not a doctrine." },
+  { ref: "Genesis 22", note: "The Aqedah — the binding of Isaac. Read slowly. Notice what God says and what God does not say." },
+  { ref: "Exodus 3", note: "The burning bush. The name God gives Moses (ehyeh asher ehyeh) is debated — read it as both 'I am' and 'I will be.'" },
+  { ref: "Deuteronomy 6:4-9", note: "The Shema. Israel's central creed. Notice it's about love before obedience." },
+  { ref: "2 Samuel 11", note: "David and Bathsheba. The narrator gives no commentary — we are watching abuse of power and being asked to see it." },
+  { ref: "Job 38", note: "God answers Job out of the whirlwind. No theodicy, no explanation — only the immensity of creation." },
+  { ref: "Hosea 11", note: "God as a parent who cannot let go. One of the tenderest passages in the prophets." },
+  { ref: "Amos 5:21-24", note: "\"Let justice roll down like waters.\" Amos's central protest against worship without ethics." },
   { ref: "Psalm 1", note: "Read the whole psalm; it's only six verses." },
   { ref: "Psalm 23", note: "The shepherd metaphor — note the shift from third person to second in verse 4." },
   { ref: "Psalm 46", note: "The psalm that gave Luther \"A Mighty Fortress.\"" },
@@ -42,7 +49,7 @@ export const DAILY_VERSES: DailyVerse[] = [
   { ref: "Luke 15", note: "Three parables of loss. The third doesn't end where you remember." },
   { ref: "Luke 24", note: "The Emmaus road. The unrecognized stranger and the breaking of bread." },
   { ref: "John 1", note: "The Word made flesh. Read the prologue (vv. 1-18) as a unit." },
-  { ref: "John 3", note: "Nicodemus by night. Verse 16 was a footnote until the 20th century." },
+  { ref: "John 3", note: "Nicodemus comes by night — and the chapter never tells us if he leaves believing. Read past verse 16 to the harder verses that follow." },
   { ref: "John 14", note: "The Last Discourse begins. \"In my Father's house are many rooms.\"" },
   { ref: "John 15", note: "The vine and the branches. An image of mutual indwelling." },
   { ref: "John 17", note: "Jesus's high-priestly prayer — the longest recorded prayer of Jesus." },

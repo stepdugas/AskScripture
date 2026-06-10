@@ -129,19 +129,39 @@ async function Content({
 }
 
 /**
- * Try cache first. If empty, fall back to generating + storing, but only
- * when both Anthropic and Supabase service-role are configured (so the
- * write actually succeeds). Returns the content string or null.
+ * Try cache first. If empty, fall back to generating + storing.
+ *
+ * Concurrency guard: a single (day, kind) in-flight Promise is shared across
+ * all concurrent requests so a traffic burst before the daily cron fires
+ * doesn't pay for N×4 Sonnet calls. The first request kicks off the LLM call;
+ * everyone else awaits the same Promise. Cleared after settlement so the next
+ * day starts fresh.
  */
+const inflight = new Map<string, Promise<string | null>>();
+
 async function resolveDailyKind(kind: DailyKind): Promise<string | null> {
   const cached = await readDailyContent(kind);
   if (cached) return cached.content;
   if (!features.ai || !features.supabase) return null;
+
+  const day = new Date().toISOString().slice(0, 10);
+  const key = `${day}:${kind}`;
+  const existing = inflight.get(key);
+  if (existing) return existing;
+
+  const task = (async () => {
+    try {
+      const generated = await generateAndStoreDailyContent(kind);
+      return generated?.content ?? null;
+    } catch {
+      return null;
+    }
+  })();
+  inflight.set(key, task);
   try {
-    const generated = await generateAndStoreDailyContent(kind);
-    return generated?.content ?? null;
-  } catch {
-    return null;
+    return await task;
+  } finally {
+    inflight.delete(key);
   }
 }
 

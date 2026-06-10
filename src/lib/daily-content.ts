@@ -19,7 +19,7 @@ const KIND_PROMPTS: Record<DailyKind, string> = {
 2) Spend 2-3 paragraphs unpacking what is actually happening in the text, in plain language.
 3) Make one honest connection to the reader's life — without inventing personal details.
 4) Close with one open question to sit with.
-Length: 350-500 words. No emojis. Avoid Christian jargon a non-churchgoer wouldn't recognize.`,
+Length: 350-500 words. No emojis. Avoid Christian jargon a non-churchgoer wouldn't recognize. Do not insert Jesus into Old Testament passages where he is not the subject. Christological readings are a legitimate move within the Christian tradition, but if you make one, name it as such ("the Christian tradition has read this as...") rather than smuggling it into the plain sense of the text.`,
   family: `You are writing a family devotional for parents to read with children ages 6-12. Structure:
 - A short retelling of the passage (4-7 sentences, sensory and concrete).
 - Two discussion questions ranked easy-to-harder.

@@ -118,7 +118,7 @@ export const BIAS_FLAGS: BiasFlag[] = [
     summary:
       "Hebrew almah means a young woman of marriageable age. The Greek Septuagint translated it parthenos (“virgin”), which Matthew 1:23 quotes. Translations diverge on how to render the Hebrew in Isaiah.",
     body:
-      "Hebrew has a separate word for “virgin” (betulah). Almah names a young woman — often, but not necessarily, unmarried and a virgin. When the Septuagint translators rendered Isaiah 7:14 into Greek (~3rd c. BCE), they used parthenos, which more strictly implies virginity. Matthew 1:23 quotes the Septuagint reading to interpret Mary. English Bibles handle this differently: most evangelical translations preserve “virgin” in Isaiah; mainline and Jewish translations tend toward “young woman.” The dispute is not about Matthew, who follows his Greek source — it is about what Isaiah's Hebrew says on its own terms.",
+      "Hebrew has betulah, often glossed “virgin,” though even betulah is not unambiguous on its own — Joel 1:8 has a betulah mourning her husband, and Genesis 24:16 has to add the qualifier “whom no man had known” to specify virginity. Almah names a young woman of marriageable age; sexual status is not part of its lexical core (HALOT, BDB). When the Septuagint translators rendered Isaiah 7:14 into Greek (~3rd c. BCE), they chose parthenos, which more strictly implies virginity. Matthew 1:23 quotes the Septuagint reading to interpret Mary. English Bibles handle this differently: most evangelical translations preserve “virgin” in Isaiah; mainline and Jewish translations tend toward “young woman.” The dispute is not about Matthew, who follows his Greek source — it is about what Isaiah's Hebrew says on its own terms.",
     renderings: [
       { translation: "BSB", text: "Behold, the virgin will be with child" },
       { translation: "WEB", text: "Behold, the virgin will conceive" },
@@ -349,6 +349,113 @@ export const BIAS_FLAGS: BiasFlag[] = [
       { translation: "KJV", text: "they that are after the flesh" },
     ],
     tags: ["atonement"],
+  },
+  {
+    id: "gen-1-26-adam",
+    bookSlug: "genesis",
+    chapter: 1,
+    verses: [26, 27, 28],
+    headline: "ʾadam: \"man,\" \"Adam,\" or \"the human\"?",
+    term: "ʾadam / hāʾādām",
+    script: "אָדָם / הָאָדָם",
+    language: "Hebrew",
+    summary:
+      "Hebrew ʾadam is built from adamah (\"ground, earth\"). It functions as a category term for humanity, a generic singular (\"the human\"), and a proper name (\"Adam\") — sometimes within the same passage. English Bibles usually pick one rendering and lose the wordplay; readings of Genesis 1-3 turn on which one.",
+    body:
+      "ʾadam is etymologically tied to adamah (\"ground, soil\") — the human is the earth-creature, made from the dirt. In Genesis 1:26-27 the term names humanity as a category (\"let us make ʾadam in our image\") and is immediately glossed as plural — \"male and female he created them.\" In Genesis 2-3, the same word appears with and without the definite article (hāʾādām, \"the human\"), and most modern scholars read the article-bearing form as a generic singular (\"the earth-creature\") rather than a proper name; the name \"Adam\" emerges in chapter 4-5 as the article drops.\n\nThis matters for at least three reading questions. (1) Is the first human of Genesis 2 a man, or an undifferentiated human from whom sexual difference is later drawn? Phyllis Trible (God and the Rhetoric of Sexuality) and others have argued the latter — the ish (man) / ishshah (woman) language only appears after the side/rib is taken. (2) Does the imago Dei attach to a male individual or to humanity-as-such? Genesis 1:27 places it on the male-and-female plural. (3) Should English translation preserve the earth-pun? Robert Alter renders \"the human\" precisely to keep the adamah / ʾadam wordplay audible. Most evangelical translations render \"man\" or \"Adam\" throughout and lose both the pun and the ambiguity. The Hebrew supports either choice; the cost of \"man\" / \"Adam\" is foreclosing readings the Hebrew leaves open.",
+    renderings: [
+      { translation: "BSB", text: "Let Us make man in Our image… male and female He created them" },
+      { translation: "WEB", text: "Let’s make man in our image… male and female he created them" },
+      { translation: "KJV", text: "Let us make man in our image… male and female created he them" },
+      { translation: "Alter", text: "Let us make a human in our image, by our likeness… male and female He created them" },
+    ],
+    tags: ["gender", "creation"],
+  },
+  {
+    id: "lev-18-22-toevah",
+    bookSlug: "leviticus",
+    chapter: 18,
+    verses: [22],
+    headline: "toʿevah: \"abomination,\" or ritually out of category?",
+    term: "toʿevah",
+    script: "תּוֹעֵבָה",
+    language: "Hebrew",
+    summary:
+      "English \"abomination\" carries 17th-century moral revulsion. The Hebrew toʿevah is closer to \"category-violation\" — something ritually or culturally out of place. The same word covers eating shrimp (Lev 11), wearing mixed fibers (Deut 22:11), and a remarried wife returning to a first husband (Deut 24:4), alongside the male-male intercourse prohibition of Lev 18:22.",
+    body:
+      "Toʿevah occurs around 117 times in the Hebrew Bible. Its semantic range covers ritual impurity (Lev 11 dietary prohibitions), boundary violations (mixed fibers, ploughing with mixed teams), cultic-foreign practices (Deut 12:31, Egyptian shepherds in Gen 46:34), and serious moral wrongs (deceit in Prov 11:1, child sacrifice in Deut 12:31). It is not a univocal moral category. Mary Douglas's Purity and Danger and subsequent scholarship (Jacob Milgrom's Leviticus 17-22 commentary; the Anchor Bible) emphasize the category-violation register: toʿevah names what is out of place in a given symbolic system, not what is intrinsically evil.\n\nThe KJV's \"abomination\" — inherited by most major English translations — collapses this range into a single English term loaded with 17th-century moral revulsion. The result is that Lev 18:22 and 20:13 sound like an unambiguous categorical moral judgment, while Lev 11's identical word applied to shrimp sounds like a quaint cultic taboo. Readers without access to the Hebrew get the impression that scripture distinguishes these passages by intensity when the lexical evidence does not.\n\nWhat to do with this is contested. Some translators argue \"abomination\" is now misleading and prefer \"detestable thing,\" \"taboo,\" or \"ritually impermissible.\" Others retain \"abomination\" but argue the reader should be taught the term covers a wide range. Affirming scholarship (William Loader, James Brownson) leans on the category-violation reading to argue Lev 18:22 belongs to the holiness code's symbolic-order concerns rather than a stand-alone moral absolute. Traditional scholarship (Robert Gagnon) argues that the moral weight of toʿevah is determinable from immediate context and that the Lev 18 prohibitions are moral in register. The Hebrew supports a long argument; the English flattens it.",
+    renderings: [
+      { translation: "BSB", text: "it is an abomination" },
+      { translation: "WEB", text: "It is an abomination" },
+      { translation: "KJV", text: "it is abomination" },
+      { translation: "Alter", text: "it is an abhorrence" },
+      { translation: "JPS (Jewish)", text: "it is an abhorrence" },
+    ],
+    tags: ["sexuality"],
+  },
+  {
+    id: "psa-16-10-sheol",
+    bookSlug: "psalms",
+    chapter: 16,
+    verses: [10],
+    headline: "sheol / hades: \"hell,\" \"the grave,\" or the realm of the dead?",
+    term: "sheol / hadēs",
+    script: "שְׁאוֹל / ᾅδης",
+    language: "Hebrew",
+    summary:
+      "Hebrew sheol is the underworld realm of the dead — a shared place all the dead descend to, not a punitive afterlife. Greek hadēs is its Septuagint equivalent. The KJV's \"hell\" for both — alongside its \"hell\" for geenna — folded three distinct Bible-world categories into one English word.",
+    body:
+      "Sheol appears 65 times in the Hebrew Bible. It names the realm of the dead — a shadowy underworld where the dead exist in diminished form (Eccl 9:5-10; Ps 6:5; 88:10-12; Job 7:9-10). It is not punitive; the righteous descend there too (Gen 37:35; 1 Sam 28; Ps 16:10). The Hebrew Bible's afterlife geography is largely undifferentiated — moral sorting into reward and punishment is a later development that becomes explicit in Second Temple Jewish literature (1 Enoch, 4 Ezra) and the New Testament.\n\nThe Septuagint translated sheol as hadēs throughout, importing the Greek mythological term but functionally preserving the meaning: the place all the dead go. The New Testament inherits this — hadēs in Acts 2:27/31 (quoting Ps 16:10), Matthew 11:23, Luke 16:23, and Revelation 1:18 is the realm of the dead, not the place of final judgment. Geenna (a separate word; see the entry on Matt 5:22) is what Jesus uses for the place of fiery judgment.\n\nThe KJV used \"hell\" to translate sheol, hadēs, geenna, and even tartaroō (2 Pet 2:4) — four distinct terms collapsed into one. Modern translations vary: NIV and ESV typically use \"the realm of the dead\" or \"the grave\" for sheol/hadēs and \"hell\" for geenna; the NRSV transliterates Sheol and Hades. The pastoral and theological stakes are significant — the Bible-world geography of the afterlife is more nuanced and less univocal than \"hell\" in modern English assumes.",
+    renderings: [
+      { translation: "BSB", text: "For You will not abandon my soul to Sheol" },
+      { translation: "WEB", text: "you will not leave my soul in Sheol" },
+      { translation: "KJV", text: "For thou wilt not leave my soul in hell" },
+      { translation: "Alter", text: "For You will not forsake my life to Sheol" },
+    ],
+    tags: ["afterlife"],
+  },
+  {
+    id: "ecc-3-11-olam",
+    bookSlug: "ecclesiastes",
+    chapter: 3,
+    verses: [11],
+    headline: "ʿolam: \"eternity,\" \"the age,\" or \"the world\" in the heart?",
+    term: "ʿolam",
+    script: "עוֹלָם",
+    language: "Hebrew",
+    summary:
+      "ʿolam covers a long-stretching duration — \"age,\" \"forever,\" \"of old,\" \"world\" — and which sense is in view is contested across passages. Ecclesiastes 3:11 puts ʿolam in the human heart, and translators diverge: \"eternity,\" \"a sense of past and future,\" \"the world,\" \"timelessness.\"",
+    body:
+      "ʿolam is the Hebrew Bible's primary term for very long duration. In Genesis 6:4 it describes the distant past (\"men of renown of old\"); in Psalm 90:2 it names God's permanence (\"from everlasting to everlasting\"); in Ecclesiastes 3:11 it is something God placed in the human heart. The lexical core is \"long-stretching, far-reaching duration\" — past, future, or both — but it lacks a built-in distinction between \"a very long age\" and \"genuinely infinite time.\"\n\nThis matters in two places. (1) ʿolam is the Hebrew counterpart to the Greek aiōn / aiōnios debate (see the aiōnios entry); the same ambiguity carries into the Septuagint and on into Christian eschatology. (2) Ecclesiastes 3:11 has produced an unusually wide spread of English renderings: \"eternity\" (NIV, ESV, NRSV), \"a sense of past and future\" (NEB), \"timelessness\" (Alter, drawing on Fox's commentary), even \"the world\" (medieval Jewish commentators, picking up the spatial-totality sense ʿolam later acquires in rabbinic Hebrew). Robert Alter glosses it as the human awareness of vast time — past and future stretching beyond comprehension — which intensifies the verse's pathos: God has given humans an awareness of the long sweep of time that exceeds what they can grasp.",
+    renderings: [
+      { translation: "BSB", text: "He has also set eternity in the hearts of men" },
+      { translation: "WEB", text: "He has also set eternity in their hearts" },
+      { translation: "KJV", text: "he hath set the world in their heart" },
+      { translation: "Alter", text: "He has put eternity in their mind" },
+      { translation: "NEB", text: "he has given men a sense of time past and future" },
+    ],
+    tags: ["afterlife", "creation"],
+  },
+  {
+    id: "gen-2-23-basar",
+    bookSlug: "genesis",
+    chapter: 2,
+    verses: [23, 24],
+    headline: "basar: \"flesh,\" kinship, and \"one flesh\"",
+    term: "basar",
+    script: "בָּשָׂר",
+    language: "Hebrew",
+    summary:
+      "Hebrew basar (\"flesh\") covers physical flesh, kinship (\"flesh of my flesh\" = \"my own family\"), and humanity-as-such. Genesis 2:24's \"one flesh\" plays on all three registers; reading it strictly as sexual union flattens the kinship dimension that the surrounding verses establish.",
+    body:
+      "Basar appears about 270 times in the Hebrew Bible. Its registers include: physical flesh of bodies, human or animal (Gen 40:19; Lev 1:6); humanity as such, often in the phrase \"all flesh\" (kol basar) (Gen 6:12; Joel 2:28); and kinship — \"my flesh\" or \"flesh of my flesh\" means \"my own family / my own kin\" (Gen 29:14; Judg 9:2; 2 Sam 5:1; 19:12-13).\n\nGenesis 2:23 deploys all three registers in two verses. The earth-creature's recognition speech — \"bone of my bones, basar of my basar\" — uses the kinship idiom: this is one of my own kind. The narrator's comment in v24 (\"and they become one basar\") draws together the physical, kinship, and humanity-as-such senses simultaneously. To read \"one flesh\" strictly as sexual union — as many evangelical marriage-theology constructions do — narrows the phrase to one register where the Hebrew is deliberately working in three. Phyllis Trible's (God and the Rhetoric of Sexuality) reading, picked up by Brueggemann and later commentators, treats Gen 2:24 as a kinship-creating claim — marriage makes new family from non-family — with the sexual dimension as one expression of that, not the whole. The complementary affirming use (Brownson, Bible, Gender, Sexuality) extends this: if one-flesh union is kinship-creation, the gender-asymmetric construals built atop the verse rest on a narrower reading than the Hebrew supports.",
+    renderings: [
+      { translation: "BSB", text: "bone of my bones and flesh of my flesh… they become one flesh" },
+      { translation: "WEB", text: "bone of my bones, and flesh of my flesh… they will be one flesh" },
+      { translation: "KJV", text: "bone of my bones, and flesh of my flesh… they shall be one flesh" },
+      { translation: "Alter", text: "bone of my bones and flesh of my flesh… they become one flesh" },
+    ],
+    tags: ["gender", "creation"],
   },
   {
     id: "phm-1-doulos",
