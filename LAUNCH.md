@@ -44,15 +44,15 @@ This applies all 6 migrations in order:
 
 You should see "Success. No rows returned" if it ran clean.
 
-### 1c. Set the admin GUC
+### 1c. Admin access — DONE (2026-06-10)
 
-1. **Project Settings → Database → Custom Postgres Config**.
-2. Add a row:
-   - Key: `app.admin_emails`
-   - Value: `stepdugas@gmail.com` (lowercase, comma-separated for multiple)
-3. Save.
+~~Set the `app.admin_emails` GUC~~ — hosted Supabase no longer allows
+custom `app.*` GUCs. Replaced by migration `0007_admin_table.sql`:
+a `public.admin_emails` table seeded with `stepdugas@gmail.com`, and
+`is_admin()` rewritten to read it. Already applied to production.
 
-This makes `is_admin()` return true for you when you sign in.
+To add another admin, run in SQL Editor:
+`insert into public.admin_emails (email) values ('other@example.com');`
 
 ### 1d. Grab the keys
 

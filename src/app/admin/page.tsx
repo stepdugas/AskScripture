@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { redirect } from "next/navigation";
 import { requireAdmin } from "@/lib/auth/user";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
@@ -8,7 +9,9 @@ import { LifetimeToggle } from "./lifetime-toggle";
 const CHAT_COST_USD = 0.015;
 const GEN_COST_USD = 0.018;
 
-export default async function AdminPage() {
+// With cacheComponents enabled, cookie-reading data access must happen
+// inside a <Suspense> boundary (same pattern as /generate/[kind]).
+export default function AdminPage() {
   // If Supabase isn't configured, explain instead of crashing.
   if (!features.supabase) {
     return (
@@ -18,6 +21,25 @@ export default async function AdminPage() {
     );
   }
 
+  return (
+    <Suspense
+      fallback={
+        <Shell>
+          <div className="text-[0.6875rem] uppercase tracking-[0.16em] text-ink-subtle font-medium">
+            Admin
+          </div>
+          <h1 className="serif mt-3 text-[2.5rem] leading-[1.05] tracking-tight text-ink font-semibold">
+            Loading…
+          </h1>
+        </Shell>
+      }
+    >
+      <AdminContent />
+    </Suspense>
+  );
+}
+
+async function AdminContent() {
   const user = await requireAdmin();
   if (!user) {
     redirect("/signin?next=/admin");
